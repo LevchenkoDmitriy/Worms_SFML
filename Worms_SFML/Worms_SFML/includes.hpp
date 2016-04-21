@@ -3,14 +3,11 @@
 #define INCLUDES_H
 
 #include <iostream>
-
-#include <Box2D\Box2D.h>
+#include <stdio.h>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>
-#include <SFML\Audio.hpp>
+#include <SFML\Window.hpp>
 
-
-#include "main.hpp"
-
+#include <Box2D\Box2D.h>
 #endif
