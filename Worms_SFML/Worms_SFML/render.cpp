@@ -47,7 +47,7 @@ void renderMenu(bool render) {
 		menuButton[2].setString("Credits");
 		menuButton[3].setString("Exit");
 
-		//Обработка нажатий на кнопки
+		//Проверка наведения мыши
 		for(int i = 0; i < 4; i++){
 			if (sf::IntRect(menuPosition[i].x, menuPosition[i].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))) {
 				menuButton[i].setColor(sf::Color(255, 0, 0, 255));
@@ -60,8 +60,9 @@ void renderMenu(bool render) {
 				window.draw(menuButton[i]);
 			}
 
-			if (sf::IntRect(menuPosition[3].x, menuPosition[3].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))
-				&&(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
+		//Проверка нажатий на кнопки
+		if (sf::IntRect(menuPosition[3].x, menuPosition[3].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))
+			&&(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
 				quit = true;
 			}
 
