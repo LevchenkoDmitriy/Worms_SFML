@@ -61,7 +61,7 @@ void renderMenu(bool render) {
 			}
 
 			if (sf::IntRect(menuPosition[3].x, menuPosition[3].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))
-				&(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
+				&&(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
 				quit = true;
 			}
 
