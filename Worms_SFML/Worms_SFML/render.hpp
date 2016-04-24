@@ -5,6 +5,8 @@
 extern bool eventMenuRender;
 //Вывод меню настроек
 extern bool eventGameSettingsRender;
+//Номер текстуры для отображения
+extern int numOfTexture;
 //Задний фон меню
 extern sf::Texture backgroundTexture;
 extern sf::Sprite backgroundSprite;
