@@ -18,6 +18,7 @@ int main()
 
 		window.clear();
 		renderMenu(eventMenuRender);
+		gameSettings(eventGameSettingsRender);
 		window.display();
 
 	}
