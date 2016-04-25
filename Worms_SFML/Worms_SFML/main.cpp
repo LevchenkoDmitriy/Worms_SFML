@@ -19,6 +19,8 @@ int main()
 		window.clear();
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
+		gameStart(eventGameStart);
+
 		window.display();
 
 	}
@@ -27,12 +29,13 @@ int main()
 
 void box2dWorldInit() {
 	b2AABB worldAABB;
-
+	bool doSleep = true;
 	//Границы обсчёта физики
 	worldAABB.lowerBound.Set(-100.0f, -100.0f);
 	worldAABB.upperBound.Set(100.0f, 100.0f);
 	//Создание мира
 	b2World world(gravity);
+	world.SetAllowSleeping(doSleep);
 }
 
 void Handler() {
