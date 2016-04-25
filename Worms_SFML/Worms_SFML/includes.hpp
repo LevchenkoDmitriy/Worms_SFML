@@ -15,5 +15,6 @@
 #include "main.hpp"
 #include "render.hpp"
 #include "map.hpp"
+#include "physics.hpp"
 
 #endif

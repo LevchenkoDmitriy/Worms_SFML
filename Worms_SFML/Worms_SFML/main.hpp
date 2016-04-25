@@ -11,8 +11,10 @@ extern int WINDOW_HEIGHT;
 //Выход из игры
 extern bool quit;
 
-//Создание мира для Box2D
-void box2dWorldInit();
+//Перенос валенковой функции
+extern bool DoSleep;
+extern b2AABB worldAABB;
+
 //Обработка нажатий
 void Handler();
 

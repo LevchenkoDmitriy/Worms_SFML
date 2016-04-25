@@ -4,13 +4,20 @@ sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Worms_SFML"
 
 b2Vec2 gravity(0.0f, -10.0f);
 
-int WINDOW_WIDTH = 1920;
-int WINDOW_HEIGHT = 1080;
+int WINDOW_WIDTH = 1366;
+int WINDOW_HEIGHT = 768;
 bool quit = false;
+b2AABB worldAABB;
+bool doSleep = true;
 
 int main()
 {
-	box2dWorldInit();
+	//Границы обсчёта физики
+	worldAABB.lowerBound.Set(-100.0f, -100.0f);
+	worldAABB.upperBound.Set(100.0f, 100.0f);
+	//Создание мира
+	b2World world(gravity);
+	world.SetAllowSleeping(doSleep);
 
 	while (!quit)
 	{
@@ -25,17 +32,6 @@ int main()
 
 	}
 	return 0;
-}
-
-void box2dWorldInit() {
-	b2AABB worldAABB;
-	bool doSleep = true;
-	//Границы обсчёта физики
-	worldAABB.lowerBound.Set(-100.0f, -100.0f);
-	worldAABB.upperBound.Set(100.0f, 100.0f);
-	//Создание мира
-	b2World world(gravity);
-	world.SetAllowSleeping(doSleep);
 }
 
 void Handler() {
