@@ -27,5 +27,7 @@ void gameSettings(bool render);
 void gameStart(bool start);
 //Генерация ландшафта
 void generateTerrarian();
+//Отображение ландшафта
+void drawTerrarian();
 
 #endif
