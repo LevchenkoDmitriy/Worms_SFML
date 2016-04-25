@@ -14,4 +14,6 @@
 
 #include "main.hpp"
 #include "render.hpp"
+#include "map.hpp"
+
 #endif

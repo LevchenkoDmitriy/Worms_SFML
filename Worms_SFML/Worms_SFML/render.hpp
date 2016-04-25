@@ -15,7 +15,7 @@ extern int colorChooseNumber;
 extern sf::Texture backgroundTexture;
 extern sf::Sprite backgroundSprite;
 //Определение цветов
-extern sf::Color red, blue, white, red, green, yellow, orange;
+extern sf::Color red, blue, white, red, green, yellow, orange, black;
 //Игровое поле
 extern bool terrarian[2500][1000];
 
@@ -25,8 +25,6 @@ void renderMenu(bool render);
 void gameSettings(bool render);
 //Загрузка и запуск игры
 void gameStart(bool start);
-//Генерация ландшафта
-void generateTerrarian();
 //Отображение ландшафта
 void drawTerrarian();
 
