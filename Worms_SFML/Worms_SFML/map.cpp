@@ -20,6 +20,7 @@ int randomNumber(int start, int end) {
 	sf::Time timeElapsed = elapsedTime.getElapsedTime();
 	sf::Int64 usec = timeElapsed.asMicroseconds();
 	srand(usec);
-	return ((int)(start + rand() % (end - start)));
+	printf("%d\n", (int)(start + rand() % (end - start)));
+	return (int)(start + rand() % (end - start));
 }
 

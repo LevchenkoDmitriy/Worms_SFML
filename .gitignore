@@ -244,3 +244,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /Worms_SFML/Worms_SFML/SFML/Network/Http.hpp
+/Worms_SFML/Worms_SFML/resource/images/maps/water.psd
