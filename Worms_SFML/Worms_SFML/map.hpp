@@ -3,5 +3,7 @@
 
 //Генерация ландшафта
 void generateTerrarian();
+//Возвращает случайное число в заданном диапазоне 
+int randomNumber(int start, int end);
 
 #endif

@@ -11,6 +11,8 @@ extern bool eventGameStart;
 extern int numOfTexture;
 //Номер выбранного цвета
 extern int colorChooseNumber;
+//Просчет одиночных объектов(см. singleRender)
+extern bool eventSingleRender;
 //Задний фон меню
 extern sf::Texture backgroundTexture;
 extern sf::Sprite backgroundSprite;
@@ -18,6 +20,8 @@ extern sf::Sprite backgroundSprite;
 extern sf::Color red, blue, white, red, green, yellow, orange, black;
 //Игровое поле
 extern bool terrarian[2500][1000];
+//Массив координат звёздочек
+extern int stars[2][70];
 
 //Рендер меню
 void renderMenu(bool render);
@@ -27,5 +31,7 @@ void gameSettings(bool render);
 void gameStart(bool start);
 //Отображение ландшафта
 void drawTerrarian();
+//Просчёт объектов, которые не будут изменять свои координаты во время игры
+void singleRender(bool render);
 
 #endif

@@ -2,7 +2,7 @@
 
 void generateTerrarian() {
 	sf::Image terrarianTexture;
-	terrarianTexture.loadFromFile("map1.png");
+	terrarianTexture.loadFromFile("resource/images/heightmap/map1.png");
 	//Получаем цвет пикселя, если черный, то заносим 0, иначе 1
 	for (int i = 0; i < 2500; i++) {
 		for (int j = 0; j < 1000; j++) {
@@ -14,3 +14,12 @@ void generateTerrarian() {
 		}
 	}
 }
+
+int randomNumber(int start, int end) {
+	//Получение времени с момента запуска в микросекундах
+	sf::Time timeElapsed = elapsedTime.getElapsedTime();
+	sf::Int64 usec = timeElapsed.asMicroseconds();
+	srand(usec);
+	return ((int)(start + rand() % (end - start)));
+}
+

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <ctime>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>

@@ -27,16 +27,6 @@ b2Body* dynamicBody = m_world->CreateBody(&myBodyDef);
 					myBodyDef.position.Set(i, j); //set the starting position
 					myBodyDef.angle = 0;
 
-				/*	sf::Vertex rectangle[] =
-					{
-						sf::Vertex(sf::Vector2f(i - 100,j - 73), red),
-						sf::Vertex(sf::Vector2f(i - 99,j - 73), red),
-						sf::Vertex(sf::Vector2f(i - 99,j -72), red),
-						sf::Vertex(sf::Vector2f(i - 100,j -72), red),
-					};
-					//Отрисовка
-					window.draw(rectangle, 4, sf::Quads);*/
-
 					image.setPixel(i, j, red);
 					image.setPixel(i-1, j, red);
 					image.setPixel(i, j-1, red);

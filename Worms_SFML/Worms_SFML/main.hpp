@@ -10,6 +10,8 @@ extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
 //Выход из игры
 extern bool quit;
+//Времени прошло с момента открытия игры
+extern sf::Clock elapsedTime;
 
 //Перенос валенковой функции
 extern bool DoSleep;
