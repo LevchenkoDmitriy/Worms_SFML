@@ -5,8 +5,8 @@ sf::Clock elapsedTime;
 
 b2Vec2 gravity(0.0f, -10.0f);
 
-int WINDOW_WIDTH = 1920;
-int WINDOW_HEIGHT = 1080;
+int WINDOW_WIDTH = 1366;
+int WINDOW_HEIGHT = 768;
 bool quit = false;
 b2AABB worldAABB;
 bool doSleep = true;
