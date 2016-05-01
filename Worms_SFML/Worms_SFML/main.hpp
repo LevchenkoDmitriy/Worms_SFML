@@ -13,9 +13,7 @@ extern bool quit;
 //Времени прошло с момента открытия игры
 extern sf::Clock elapsedTime;
 
-//Перенос валенковой функции
-extern bool DoSleep;
-extern b2AABB worldAABB;
+extern b2World world;
 
 //Обработка нажатий
 void Handler();
