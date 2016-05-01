@@ -5,14 +5,10 @@ sf::Clock elapsedTime;
 
 b2Vec2 gravity(0.0f, 10.0f);
 
-int WINDOW_WIDTH = 1366;
-int WINDOW_HEIGHT = 768;
+int WINDOW_WIDTH = 1920;
+int WINDOW_HEIGHT = 1080;
 bool quit = false;
 b2World world(gravity);
-
-
-
-
 
 int main()
 {
@@ -20,30 +16,30 @@ int main()
 	boxTexture.loadFromFile("box.png");
 	sf::Sprite boxSprite(boxTexture);
 
-	b2PolygonShape boxShape;
-	boxShape.SetAsBox(90 /SCALE, 90/SCALE);
+	/*b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0.0f, -10.0f);	b2Body* groundBody = world.CreateBody(&groundBodyDef);	b2PolygonShape groundBox;
+	groundBox.SetAsBox(50.0f, 10.0f);	groundBody->CreateFixture(&groundBox, 0.0f);*/	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(0.0f, 4.0f);
+	b2Body* body = world.CreateBody(&bodyDef);	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(1.0f, 1.0f);	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
+	fixtureDef.density = 1.0f;
+	fixtureDef.friction = 0.3f;	body->CreateFixture(&fixtureDef);	float32 timeStep = 1.0f / 11.0f;	int32 velocityIterations = 6;
+	int32 positionIterations = 2;
 
-	b2BodyDef bdef;
-	bdef.type = b2_dynamicBody;
-	//bdef.position.Set(0, 0);
-
-
-	b2Body *body = world.CreateBody(&bdef);
-	body->SetActive(true);
-	body->CreateFixture(&boxShape, 2);
-	body->SetUserData("box");
-	
 	while (!quit)
 	{
 		Handler();
 
 		window.clear();
+		
+		world.Step(timeStep, velocityIterations, positionIterations);
+		b2Vec2 position = body->GetPosition();
+		float32 angle = body->GetAngle();
+		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
 
-		b2Vec2 pos = body->GetPosition();
-		float angle = body->GetAngle();
-
-		printf("%f %f\n", pos.x, pos.y);
-		boxSprite.setPosition(pos.x*SCALE, pos.y*SCALE);
+		boxSprite.setPosition(position.x*SCALE, position.y*SCALE);
 		boxSprite.setRotation(angle*RAD);
 
 		renderMenu(eventMenuRender);
@@ -64,9 +60,9 @@ void Handler() {
 	{
 		if (event.type == sf::Event::Closed)
 			window.close();
-		if (event.type == sf::Event::KeyPressed) {
+		/*if (event.type == sf::Event::KeyPressed) {
 			//
-			}
+			}*/
 		}
 	}
 
