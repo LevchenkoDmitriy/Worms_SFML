@@ -2,19 +2,17 @@
 
 sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Worms_SFML", sf::Style::Fullscreen);
 sf::Clock elapsedTime;
-sf::ContextSettings settings;
 
 b2Vec2 gravity(0.0f, 10.0f);
 
-int WINDOW_WIDTH = 1920;
-int WINDOW_HEIGHT = 1080;
+int WINDOW_WIDTH = 1366;
+int WINDOW_HEIGHT = 768;
 bool quit = false;
 b2World world(gravity);
 
 int main()
 {
 	window.setFramerateLimit(60);
-	settings.antialiasingLevel = 100;
 
 	sf::Texture boxTexture;
 	boxTexture.loadFromFile("box.png");
@@ -25,7 +23,7 @@ int main()
 	
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(1550/SCALE, 50/SCALE);
+	bodyDef.position.Set(1000/SCALE, 50/SCALE);
 	b2Body* body = world.CreateBody(&bodyDef);	b2PolygonShape dynamicBox;
 	dynamicBox.SetAsBox(1.5f, 1.5f);	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
@@ -64,9 +62,25 @@ void Handler() {
 	{
 		if (event.type == sf::Event::Closed)
 			window.close();
-		/*if (event.type == sf::Event::KeyPressed) {
-			//
-			}*/
+		if (event.type == sf::Event::KeyPressed) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+				wormMoving.
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+				wormMoving::wormMoveRight;
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+				wormMoving::wormJump;
+			}
+			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
+				(sf::Keyboard::isKeyPressed(sf::Keyboard::A))) {
+				wormMoving::wormJumpLeft;
+			}
+			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
+				(sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
+				wormMoving::wormJumpRight;
+			}
+			}
+			}
 		}
-	}
 

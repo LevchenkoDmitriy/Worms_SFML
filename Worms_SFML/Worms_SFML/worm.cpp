@@ -1,6 +1,7 @@
 #include <includes.hpp>
 
 wormFields *worm;
+int currentWorm = 0;
 
 void generateWorms() {
 	for (int k = 0; k < 6; k++) {
@@ -29,3 +30,4 @@ void generateWorms() {
 	}
 
 }
+
