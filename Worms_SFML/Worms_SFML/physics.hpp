@@ -7,7 +7,6 @@ extern const int SCALE;
 extern const int RAD;
 //¬спомогательный массив дл€ хранени€ физики земли
 extern bool groundSavePhysics[2500][1000];
-void debugDraw();
 
 void groundPhysics();
 #endif

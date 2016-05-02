@@ -21,28 +21,9 @@ void groundPhysics() {
 				{
 					groundSavePhysics[i][j] = true;
 					b2BodyDef groundBodyDef;
-					groundBodyDef.position.Set(i/SCALE, j/SCALE);					b2Body* groundBody = world.CreateBody(&groundBodyDef);					b2PolygonShape groundBox;
-					groundBox.SetAsBox(0.001/SCALE, 0.001 / SCALE);					groundBody->CreateFixture(&groundBox, 0.0f);
+					groundBodyDef.position.Set(i*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width)/SCALE,						j*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)/SCALE);					b2Body* groundBody = world.CreateBody(&groundBodyDef);					b2PolygonShape boxPolygon;					b2CircleShape circle;					circle.m_radius = 0.01/SCALE;					boxPolygon.SetAsBox(10 / SCALE, 10 / SCALE);					groundBody->CreateFixture(&circle, 0.0f);
 				}
 			}
 		}
 	}
-}
-
-void debugDraw() {
-	sf::Texture boxTexture;
-	boxTexture.loadFromFile("box.png");
-	sf::Sprite box(boxTexture);
-	box.setOrigin(45.0f, 45.0f);
-	box.setScale(0.1, 0.1);
-	for (int i = 0; i < 2500; i++) {
-		for (int j = 0; j < 1000; j++) {
-			if (groundSavePhysics[i][j] == true) {
-				box.setPosition(i, j);
-				window.draw(box);
-			}
-				
-		}
-	}
-			
 }
