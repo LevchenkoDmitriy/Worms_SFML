@@ -7,6 +7,8 @@ extern bool eventMenuRender;
 extern bool eventGameSettingsRender;
 //Старт игры
 extern bool eventGameStart;
+//Флаг, отвечающий за перерендер ландшафта
+extern bool terrarianFlag;
 //Номер выбранной текстуры для генерации карты
 extern int numOfTexture;
 //Номер выбранного цвета

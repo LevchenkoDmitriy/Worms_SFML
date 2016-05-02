@@ -5,8 +5,8 @@ sf::Clock elapsedTime;
 
 b2Vec2 gravity(0.0f, 10.0f);
 
-int WINDOW_WIDTH = 1024;
-int WINDOW_HEIGHT = 768;
+int WINDOW_WIDTH = 1920;
+int WINDOW_HEIGHT = 1080;
 bool quit = false;
 b2World world(gravity);
 
@@ -15,18 +15,16 @@ int main()
 	sf::Texture boxTexture;
 	boxTexture.loadFromFile("box.png");
 	sf::Sprite boxSprite(boxTexture);
-
-	/*b2BodyDef groundBodyDef;
-	groundBodyDef.position.Set(0.0f, -10.0f);	b2Body* groundBody = world.CreateBody(&groundBodyDef);	b2PolygonShape groundBox;
-	groundBox.SetAsBox(50.0f, 10.0f);	groundBody->CreateFixture(&groundBox, 0.0f);*/	b2BodyDef bodyDef;
+	boxSprite.setOrigin(45.0f, 45.0f);
+	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(0.0f, 4.0f);
+	bodyDef.position.Set(400/SCALE, 4.0f);
 	b2Body* body = world.CreateBody(&bodyDef);	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(1.0f, 1.0f);	b2FixtureDef fixtureDef;
+	dynamicBox.SetAsBox(1.5f, 1.5f);	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;	body->CreateFixture(&fixtureDef);	float32 timeStep = 1.0f / 11.0f;	int32 velocityIterations = 6;
-	int32 positionIterations = 2;
+	fixtureDef.density = 5.0f;
+	fixtureDef.friction = 0.3f;	body->CreateFixture(&fixtureDef);	float32 timeStep = 1.0f / 40.0f;	int32 velocityIterations = 8;
+	int32 positionIterations = 3;
 
 	while (!quit)
 	{
