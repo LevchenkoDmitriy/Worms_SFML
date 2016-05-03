@@ -7,6 +7,7 @@
 #include <vector>
 #include <ctime>
 #include <string>
+#include <set>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>

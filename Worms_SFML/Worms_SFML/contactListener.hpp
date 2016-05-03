@@ -2,17 +2,32 @@
 #ifndef CONTACTLISTENER_H
 #define CONTACTLISTENER_H
 
-class contactListener {
-public:
+//Множество фикстур под землей
+std::set<b2Fixture*> fixturesUnderfoot;
+
+//Класс, который будет отвечать за проверку находится ли наш объект на земле
+class MyContactListener : public b2ContactListener
+{
 	void BeginContact(b2Contact* contact) {
-		//check if fixture A was the foot sensor
+		//фикстура A - сенсор
 		void* fixtureUserData = contact->GetFixtureA()->GetUserData();
 		if ((int)fixtureUserData == 3)
-			numFootContacts++;
-		//check if fixture B was the foot sensor
+			fixturesUnderfoot.insert(contact->GetFixtureB());//A - низ, В - земля
+															 //Проверка, что В - сенсор
 		fixtureUserData = contact->GetFixtureB()->GetUserData();
 		if ((int)fixtureUserData == 3)
-			numFootContacts++;
+			fixturesUnderfoot.insert(contact->GetFixtureA());
+	}
+
+	void EndContact(b2Contact* contact) {
+		void* fixtureUserData = contact->GetFixtureA()->GetUserData();
+		if ((int)fixtureUserData == 3)
+			fixturesUnderfoot.erase(contact->GetFixtureB());
+														
+		fixtureUserData = contact->GetFixtureB()->GetUserData();
+		if ((int)fixtureUserData == 3)
+			fixturesUnderfoot.erase(contact->GetFixtureA());
+	}
 };
 
 #endif
