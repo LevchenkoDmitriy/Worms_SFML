@@ -1,7 +1,7 @@
 #include <includes.hpp>
 
 wormFields *worm = new wormFields[6];
-bool exitFor = false;
+int currentWorm = 0;
 
 void deathChecking() {
 	for (int i = 0; i < 6; i++) {

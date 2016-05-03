@@ -3,7 +3,7 @@
 #define CONTACTLISTENER_H
 
 //Множество фикстур под землей
-std::set<b2Fixture*> fixturesUnderfoot;
+extern std::set<b2Fixture*> fixturesUnderfoot;
 
 //Класс, который будет отвечать за проверку находится ли наш объект на земле
 class MyContactListener : public b2ContactListener
