@@ -38,18 +38,18 @@ public:
 	}
 	void wormJumpLeft() {
 		worm[currentWorm].isJumpLeft = true;
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-300, -400), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-300, -800), body[currentWorm]->GetLocalCenter(), true);
 		//worm[currentWorm].isJumpLeft = false;
 	}
 	void wormJumpRight() {
 		worm[currentWorm].isJumpRight = true;
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(300, -400), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(300, -800), body[currentWorm]->GetLocalCenter(), true);
 		//worm[currentWorm].isJumpRight = false;
 	}
 
 	void wormJump() {
 			worm[currentWorm].isJump = true;
-			body[currentWorm]->ApplyLinearImpulse(b2Vec2(0, -7000), body[currentWorm]->GetLocalCenter(), true);
+			body[currentWorm]->ApplyLinearImpulse(b2Vec2(0, -1000), body[currentWorm]->GetLocalCenter(), true);
 		//worm[currentWorm].isJump = false;
 	}
 
