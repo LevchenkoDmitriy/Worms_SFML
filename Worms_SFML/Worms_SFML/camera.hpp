@@ -2,6 +2,6 @@
 #define CAMERA_H
 
 extern sf::View camera; //объ€вление вида
-void getplayercoordinateforview(float x, float y);
+void getPlayerCoordinateForView();
 
 #endif

@@ -28,7 +28,6 @@ void groundPhysics() {
 
 					b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
-					//b2CircleShape circle;
 					b2CircleShape circle;
 					circle.m_radius = 0.001 / SCALE;
 					b2FixtureDef circleDef;

@@ -28,11 +28,11 @@ public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
 		float angle = body[currentWorm]->GetAngle();
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-0.3*sin(angle*RAD), 0), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-1000, 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+0.1, 0), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+1000, 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormJumpLeft() {
 		/*worm[currentWorm].isJumpLeft = true;
