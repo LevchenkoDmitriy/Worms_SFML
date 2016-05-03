@@ -19,5 +19,6 @@
 #include "map.hpp"
 #include "physics.hpp"
 #include "worm.hpp"
+#include "camera.hpp"
 
 #endif

@@ -2,11 +2,11 @@
 
 sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Worms_SFML", sf::Style::Fullscreen);
 sf::Clock elapsedTime;
-
+float CurrentFrame = 0;//хранит текущий кадр
 b2Vec2 gravity(0.0f, 20.0f);
 
-int WINDOW_WIDTH = 1920;
-int WINDOW_HEIGHT = 1080;
+int WINDOW_WIDTH = 1366;
+int WINDOW_HEIGHT = 768;
 
 bool quit = false;
 b2World world(gravity);
@@ -33,8 +33,9 @@ int main()
 
 	while (!quit)
 	{
+		
 		Handler();
-
+		
 		window.clear();
 		
 
@@ -47,6 +48,7 @@ int main()
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);
+		window.setView(camera);//"оживляем" камеру в окне sfml
 		window.draw(boxSprite);
 
 		window.display();
@@ -59,6 +61,7 @@ int main()
 void Handler() {
 	wormMoving WormMoving;
 	sf::Event event;
+
 	while (window.pollEvent(event))
 	{
 		if (event.type == sf::Event::Closed)
@@ -66,11 +69,13 @@ void Handler() {
 		if (event.type == sf::Event::KeyPressed) {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 				WormMoving.wormMoveLeft();
+				
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 				WormMoving.wormMoveRight();
+				
 			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+		/*	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				WormMoving.wormJump();
 			}
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
@@ -80,7 +85,7 @@ void Handler() {
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
 				(sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
 				WormMoving.wormJumpRight();
-			}
+			}*/
 			}
 			}
 		}
