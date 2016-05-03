@@ -5,8 +5,8 @@ sf::Clock elapsedTime;
 float CurrentFrame = 0;//хранит текущий кадр
 b2Vec2 gravity(0.0f, 20.0f);
 
-int WINDOW_WIDTH = 1366;
-int WINDOW_HEIGHT = 768;
+int WINDOW_WIDTH = 1920;
+int WINDOW_HEIGHT = 1080;
 
 bool quit = false;
 b2World world(gravity);
