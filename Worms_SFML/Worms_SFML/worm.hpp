@@ -14,6 +14,8 @@ struct wormFields {
 	bool isMoveRight;
 	bool isJump;
 	bool isFalling;
+	bool isJumpLeft;
+	bool isJumpRight;
 };
 //Класс обработки движения
 extern wormFields *worm;
@@ -28,24 +30,27 @@ public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
 		float angle = body[currentWorm]->GetAngle();
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-1000, 0), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-700, 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+1000, 0), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+700, 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormJumpLeft() {
-		/*worm[currentWorm].isJumpLeft = true;
-		worm[currentWorm].isJumpLeft = false;*/
+		worm[currentWorm].isJumpLeft = true;
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-300, -400), body[currentWorm]->GetLocalCenter(), true);
+		//worm[currentWorm].isJumpLeft = false;
 	}
 	void wormJumpRight() {
-		/*worm[currentWorm].isJumpRight = true;
-		worm[currentWorm].isJumpRight = false;*/
+		worm[currentWorm].isJumpRight = true;
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(300, -400), body[currentWorm]->GetLocalCenter(), true);
+		//worm[currentWorm].isJumpRight = false;
 	}
 
 	void wormJump() {
-		/*	worm[currentWorm].isJump = true;
-		worm[currentWorm].isJump = false;*/
+			worm[currentWorm].isJump = true;
+			body[currentWorm]->ApplyLinearImpulse(b2Vec2(0, -7000), body[currentWorm]->GetLocalCenter(), true);
+		//worm[currentWorm].isJump = false;
 	}
 
 	void wormFall() {

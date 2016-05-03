@@ -51,7 +51,7 @@ void Handler() {
 				WormMoving.wormMoveRight();
 				
 			}
-		/*	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				WormMoving.wormJump();
 			}
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
@@ -61,7 +61,7 @@ void Handler() {
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
 				(sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
 				WormMoving.wormJumpRight();
-			}*/
+			}
 			}
 			}
 		}

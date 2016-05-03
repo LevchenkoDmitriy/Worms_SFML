@@ -15,6 +15,8 @@ void generateWorms() {
 		worm[k].isMoveRight = 0;
 		worm[k].isFalling = 0;
 		worm[k].isJump = 0;
+		worm[k].isJumpLeft = 0;
+		worm[k].isJumpRight = 0;
 
 		int x = 0;
 		bool generate = true;
