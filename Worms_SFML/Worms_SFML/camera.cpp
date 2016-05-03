@@ -10,8 +10,8 @@ void getPlayerCoordinateForView() {
 		{
 			camera.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT/2 );
 		}
-		if (position.y*SCALE > 1000) {
-			camera.setCenter(WINDOW_WIDTH / 2, 800 - WINDOW_HEIGHT / 2);
+		if (position.y*SCALE > WINDOW_HEIGHT) {
+			camera.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT/2);
 		}
 	}else
 		if (position.x*SCALE > 2500* (WINDOW_WIDTH / backgroundSprite.getLocalBounds().width)) {
