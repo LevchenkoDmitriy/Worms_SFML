@@ -28,7 +28,7 @@ public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
 		float angle = body[currentWorm]->GetAngle();
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-0.1*sin(angle), 0), body[currentWorm]->GetLocalCenter(), true);
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-0.3*sin(angle*RAD), 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;

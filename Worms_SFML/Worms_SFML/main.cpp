@@ -14,6 +14,7 @@ b2World world(gravity);
 int main()
 {
 	window.setFramerateLimit(60);
+	window.setKeyRepeatEnabled(true);
 
 	sf::Texture boxTexture;
 	boxTexture.loadFromFile("box.png");

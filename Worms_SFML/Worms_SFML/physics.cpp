@@ -52,7 +52,7 @@ void wormGeneratePhysics() {
 		bodyDef.position.Set(worm[i].position.x*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width) / SCALE, 
 			worm[i].position.y*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height) / SCALE);
 		body[i] = world.CreateBody(&bodyDef);		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(0.45, 0.45);		b2FixtureDef fixtureDef;
+		dynamicBox.SetAsBox(0.4, 0.45);		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &dynamicBox;
 		fixtureDef.density = 1.0f;
 		fixtureDef.friction = 10.0f;		body[i]->CreateFixture(&fixtureDef);
