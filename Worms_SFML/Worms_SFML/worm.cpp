@@ -20,11 +20,11 @@ void generateWorms() {
 		bool generate = true;
 		while(generate){
 			int i = randomNumber(1, 2500);
-			int j = randomNumber(1, 500);
+			int j = randomNumber(1, 1000);
 			if ((terrarian[i][j] == true) &&
 				((terrarian[i - 1][j - 1] == 0) || (terrarian[i][j - 1]) || (terrarian[i + 1][j - 1] == 0))){
 					worm[k].position.x = i*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width);
-					worm[k].position.y = j*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height) - 400;
+					worm[k].position.y = 50;
 					generate = false;
 			}
 
