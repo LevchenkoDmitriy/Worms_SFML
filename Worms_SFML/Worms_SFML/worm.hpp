@@ -22,9 +22,10 @@ extern wormFields *worm;
 //Указатель на текущего червя
 extern int currentWorm;
 
+void deathChecking();
 //Генерация червей игрока
 void generateWorms();
-void deathChecking();
+
 class wormMoving {
 public:
 	void wormMoveLeft() {
