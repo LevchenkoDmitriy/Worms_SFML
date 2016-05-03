@@ -16,41 +16,16 @@ int main()
 	window.setFramerateLimit(60);
 	window.setKeyRepeatEnabled(true);
 
-	sf::Texture boxTexture;
-	boxTexture.loadFromFile("box.png");
-	boxTexture.setSmooth(true);
-
-	sf::Sprite boxSprite(boxTexture);
-	boxSprite.setOrigin(45.0f, 45.0f);
-	
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(1000/SCALE, 50/SCALE);
-	b2Body* body = world.CreateBody(&bodyDef);	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(1.5f, 1.5f);	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
-	fixtureDef.density = 5.0f;
-	fixtureDef.friction = 0.03f;	body->CreateFixture(&fixtureDef);
-
 	while (!quit)
-	{
-		
+	{	
 		Handler();
 		
 		window.clear();
-		
-
-		b2Vec2 position = body->GetPosition();
-		float32 angle = body->GetAngle();
-
-		boxSprite.setPosition(position.x*SCALE, position.y*SCALE);
-		boxSprite.setRotation(angle*RAD);
 
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);
 		window.setView(camera);//"оживляем" камеру в окне sfml
-		window.draw(boxSprite);
 
 		window.display();
 

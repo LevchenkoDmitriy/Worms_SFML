@@ -31,3 +31,7 @@ void generateWorms() {
 		}
 	}
 }
+
+void filterWormMoving() {
+
+}

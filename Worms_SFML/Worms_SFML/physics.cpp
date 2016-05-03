@@ -34,8 +34,7 @@ void groundPhysics() {
 					b2FixtureDef circleDef;
 					circleDef.shape = &circle;
 					circleDef.density = 0;
-					circleDef.friction = 100.0f;
-
+					circleDef.friction = 1.0f;
 
 					groundBody->CreateFixture(&circleDef);
 					
@@ -49,12 +48,11 @@ void wormGeneratePhysics() {
 	for (int i = 0; i < 6; i++) {
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(worm[i].position.x*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width) / SCALE, 
-			worm[i].position.y*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height) / SCALE);
+		bodyDef.position.Set(worm[i].position.x / SCALE, worm[i].position.y / SCALE);
 		body[i] = world.CreateBody(&bodyDef);		b2PolygonShape dynamicBox;
 		dynamicBox.SetAsBox(0.4, 0.45);		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &dynamicBox;
-		fixtureDef.density = 1.0f;
-		fixtureDef.friction = 10.0f;		body[i]->CreateFixture(&fixtureDef);
+		fixtureDef.density = 1000.0f;
+		fixtureDef.friction = 1.0f;		body[i]->CreateFixture(&fixtureDef);
 	}
 }
