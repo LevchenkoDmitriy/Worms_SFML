@@ -1,8 +1,9 @@
-#include "includes.hpp"
+#include <includes.hpp>
 
 bool groundSavePhysics[2500][1000] = { false };
 const int SCALE = 30.0f;
 const int RAD = 57.2958;
+b2Body* body[6];
 
 void groundPhysics() {
 	
@@ -23,15 +24,37 @@ void groundPhysics() {
 					b2BodyDef groundBodyDef;
 					groundBodyDef.position.Set(i*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width)/SCALE,
 						j*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)/SCALE);
+					
 
 					b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
+					//b2CircleShape circle;
 					b2CircleShape circle;
-					circle.m_radius = 0.01/SCALE;
+					circle.m_radius = 0.001 / SCALE;
+					b2FixtureDef circleDef;
+					circleDef.shape = &circle;
+					circleDef.density = 0;
+					circleDef.friction = 100.0f;
 
-					groundBody->CreateFixture(&circle, 0.0f);
+
+					groundBody->CreateFixture(&circleDef);
+					
 				}
 			}
 		}
+	}
+}
+
+void wormGeneratePhysics() {
+	for (int i = 0; i < 6; i++) {
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(worm[i].position.x*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width) / SCALE, 
+			worm[i].position.y*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height) / SCALE);
+		body[i] = world.CreateBody(&bodyDef);		b2PolygonShape dynamicBox;
+		dynamicBox.SetAsBox(40 / SCALE, 40 / SCALE);		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+		fixtureDef.density = 1.0f;
+		fixtureDef.friction = 10.0f;		fixtureDef.restitution = 0.1;		body[i]->CreateFixture(&fixtureDef);
 	}
 }

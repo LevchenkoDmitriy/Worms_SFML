@@ -8,6 +8,7 @@ struct wormFields {
 	sf::Vector2f position;
 	int health;
 	int team;
+	float angle;
 
 	bool isMoveLeft;
 	bool isMoveRight;
@@ -15,8 +16,6 @@ struct wormFields {
 	bool isFalling;
 };
 //Класс обработки движения
-
-
 extern wormFields *worm;
 //Указатель на текущего червя
 extern int currentWorm;
@@ -28,13 +27,12 @@ class wormMoving {
 public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
-		worm[currentWorm].position.x -= 10 * (WINDOW_WIDTH / backgroundSprite.getLocalBounds().width);
-		worm[currentWorm].isMoveLeft = false;
+		float angle = body[currentWorm]->GetAngle();
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-0.1*sin(angle), 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
-		worm[currentWorm].position.x += 10 * (WINDOW_WIDTH / backgroundSprite.getLocalBounds().width);
-		worm[currentWorm].isMoveRight = false;
+		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+0.1, 0), body[currentWorm]->GetLocalCenter(), true);
 	}
 	void wormJumpLeft() {
 		/*worm[currentWorm].isJumpLeft = true;

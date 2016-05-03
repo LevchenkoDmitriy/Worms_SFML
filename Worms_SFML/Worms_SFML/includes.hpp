@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <vector>
 #include <ctime>
+#include <string>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>

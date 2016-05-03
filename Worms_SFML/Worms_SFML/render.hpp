@@ -38,7 +38,8 @@ void drawTerrarian();
 //Просчёт объектов, которые не будут изменять свои координаты во время игры
 void singleRender(bool render);
 //Рендер червей
-void wormRender();
+void wormRenderMoving();
+void wormRenderStatic();
 //Функция масштабирования спрайтов под разрешение монитора
 sf::Sprite resize(sf::Sprite sprite);
 

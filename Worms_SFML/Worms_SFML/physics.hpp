@@ -7,6 +7,11 @@ extern const int SCALE;
 extern const int RAD;
 //Вспомогательный массив для хранения физики земли
 extern bool groundSavePhysics[2500][1000];
+//Хранение тел каждого червя
+extern b2Body* body[6];
 
+//Обработка физики земли
 void groundPhysics();
+//Генерация хитбоксов каждого червя
+void wormGeneratePhysics();
 #endif
