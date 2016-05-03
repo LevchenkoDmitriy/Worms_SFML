@@ -24,7 +24,7 @@ extern int currentWorm;
 
 //Генерация червей игрока
 void generateWorms();
-
+void deathChecking();
 class wormMoving {
 public:
 	void wormMoveLeft() {

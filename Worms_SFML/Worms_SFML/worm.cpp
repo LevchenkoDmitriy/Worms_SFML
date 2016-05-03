@@ -1,8 +1,20 @@
 #include <includes.hpp>
 
 wormFields *worm = new wormFields[6];
-int currentWorm = 0;
 bool exitFor = false;
+
+void deathChecking() {
+	for (int i = 0; i < 6; i++) {
+		b2Vec2 position = body[i]->GetPosition();
+		float angle = body[i]->GetAngle();
+		if ((position.x > 2480) ||
+			(position.x < -980) ||
+			(position.y < -970) ||
+			(position.y > 800)) {
+			worm[i].isDead = true;
+		}
+	}
+}
 
 void generateWorms() {
 	for (int k = 0; k < 6; k++) {
