@@ -1,8 +1,8 @@
 #include <includes.hpp>
 
 bool groundSavePhysics[2500][1000] = { false };
-const int SCALE = 30.0f;
-const int RAD = 57.2958;
+const float SCALE = 30.0f;
+const double RAD = 57.2958;
 b2Body* body[6];
 
 void groundPhysics() {
