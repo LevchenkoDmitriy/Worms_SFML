@@ -21,11 +21,12 @@ struct wormFields {
 extern wormFields *worm;
 //Указатель на текущего червя
 extern int currentWorm;
-
+//Функция проверки смерти червя, при выходе за границу обсчета физики
 void deathChecking();
 //Генерация червей игрока
 void generateWorms();
 
+//Управление движением червяка
 class wormMoving {
 public:
 	void wormMoveLeft() {
