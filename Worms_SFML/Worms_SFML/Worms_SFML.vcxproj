@@ -145,6 +145,7 @@
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="render.cpp" />
     <ClCompile Include="worm.cpp" />
+    <ClCompile Include="wormDescribing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.hpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="physics.hpp" />
     <ClInclude Include="render.hpp" />
     <ClInclude Include="worm.hpp" />
+    <ClInclude Include="wormDescribing.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

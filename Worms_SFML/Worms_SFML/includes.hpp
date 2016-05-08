@@ -22,5 +22,6 @@
 #include "worm.hpp"
 #include "camera.hpp"
 #include "contactListener.hpp"
+#include "wormDescribing.hpp"
 
 #endif

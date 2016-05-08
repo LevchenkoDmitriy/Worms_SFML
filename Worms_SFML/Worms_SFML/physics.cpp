@@ -43,25 +43,5 @@ void groundPhysics() {
 	}
 }
 
-void wormGeneratePhysics() {
-	for (int i = 0; i < 6; i++) {
-		b2BodyDef bodyDef;
-		bodyDef.type = b2_dynamicBody;
-		bodyDef.position.Set(worm[i].position.x / SCALE, worm[i].position.y / SCALE);
-		bodyDef.fixedRotation = true;
 
-		body[i] = world.CreateBody(&bodyDef);		b2PolygonShape dynamicBox;
-		dynamicBox.SetAsBox(0.4, 0.45);		b2FixtureDef fixtureDef;
-		fixtureDef.shape = &dynamicBox;
-		fixtureDef.density = 100.0f;
-		fixtureDef.friction = 0.03f;		body[i]->CreateFixture(&fixtureDef);
-
-		//Добавляем прямоугольник для определения на земле мы или нет
-		dynamicBox.SetAsBox(0.3, 0.3, b2Vec2(0, -0.45), 0);
-		fixtureDef.isSensor = true;
-		b2Fixture* footSensorFixture = body[i]->CreateFixture(&fixtureDef);
-		footSensorFixture->SetUserData((void*)i);
-
-
-	}
 }

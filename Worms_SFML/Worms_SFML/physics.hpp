@@ -12,6 +12,4 @@ extern b2Body* body[6];
 
 //Обработка физики земли
 void groundPhysics();
-//Генерация хитбоксов каждого червя
-void wormGeneratePhysics();
 #endif
