@@ -59,18 +59,16 @@ public:
 	void wormMovingLeftRender() {
 		moveTimerLeft += 0.4;
 		if (moveTimerLeft > 1) {
-			if (leftX == 3)
+			if (leftX == 2)
 				leftX = 0;
 			else
 				leftX++;
-			for (int i = 0; i < 3; i++) {
 				wormSprite.setTextureRect(sf::IntRect(leftX * 40, 0, 40, 40));
 				wormSprite.setOrigin(20, 20);
 				wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
 				wormSprite.setRotation(angle*RAD);
 
 				window.draw(wormSprite);
-			}
 			moveTimerLeft = 0;
 		}
 	}
@@ -78,18 +76,16 @@ public:
 	void wormMovingRightRender() {
 		moveTimerRight += 0.4;
 		if (moveTimerRight > 1) {
-			if (rightX == 3)
+			if (rightX == 2)
 				rightX = 0;
 			else
 				rightX++;
-			for (int i = 0; i < 3; i++) {
 				wormSprite.setTextureRect(sf::IntRect(rightX * 40, 40, 40, 40));
 				wormSprite.setOrigin(20, 20);
 				wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
 				wormSprite.setRotation(angle*RAD);
 
 				window.draw(wormSprite);
-			}
 			moveTimerRight = 0;
 		}
 	}
