@@ -13,6 +13,8 @@ extern int WINDOW_HEIGHT;
 extern bool quit;
 //Времени прошло с момента открытия игры
 extern sf::Clock elapsedTime;
+//Таймер для отрисовки анимации
+extern sf::Clock animationClock;
 
 extern b2World world;
 

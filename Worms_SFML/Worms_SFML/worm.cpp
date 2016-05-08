@@ -3,6 +3,11 @@
 wormFields *worm = new wormFields[6];
 int currentWorm = 0;
 
+int leftX = 0;
+int rightX = 0;
+double moveTimerLeft = 0;
+double moveTimerRight = 0;
+
 void deathChecking() {
 	for (int i = 0; i < 6; i++) {
 		b2Vec2 position = body[i]->GetPosition();
@@ -23,14 +28,12 @@ void generateWorms() {
 		worm[k].team = colorChooseNumber;
 		worm[k].numberOfWorm = k;
 
-		worm[k].isMoveLeft = 0;
-		worm[k].isMoveRight = 0;
-		worm[k].isFalling = 0;
-		worm[k].isJump = 0;
-		worm[k].isJumpLeft = 0;
-		worm[k].isJumpRight = 0;
+		worm[k].isMoveLeft = false;
+		worm[k].isMoveRight = false;
+		worm[k].isFalling = false;
+		worm[k].isJump = false;
+		worm[k].view = false;
 
-		int x = 0;
 		bool generate = true;
 		while(generate){
 			int i = randomNumber(1, 2500);

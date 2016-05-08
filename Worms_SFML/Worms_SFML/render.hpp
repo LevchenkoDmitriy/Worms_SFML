@@ -26,6 +26,10 @@ extern bool terrarian[2500][1000];
 extern int stars[2][400];
 //Массив анимации воды
 extern double water;
+//Текстура и спрайт для червей
+extern sf::Texture wormTexture;
+extern sf::Sprite wormSprite;
+
 
 //Рендер меню
 void renderMenu(bool render);

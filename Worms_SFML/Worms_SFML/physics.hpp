@@ -12,4 +12,6 @@ extern b2Body* body[6];
 
 //Обработка физики земли
 void groundPhysics();
+
+void wormGeneratePhysics();
 #endif

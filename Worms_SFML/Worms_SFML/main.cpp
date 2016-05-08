@@ -2,6 +2,7 @@
 
 sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Worms_SFML", sf::Style::Fullscreen);
 sf::Clock elapsedTime;
+sf::Clock animationClock;
 b2Vec2 gravity(0.0f, 20.0f);
 
 int WINDOW_WIDTH = 1920;
@@ -53,15 +54,7 @@ void Handler() {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 				WormMoving.wormJump();
 			}
-			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
-				(sf::Keyboard::isKeyPressed(sf::Keyboard::A))) {
-				WormMoving.wormJumpLeft();
-			}
-			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
-				(sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
-				WormMoving.wormJumpRight();
-			}
-			}
-			}
 		}
+	}
+}
 
