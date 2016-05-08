@@ -4,4 +4,6 @@
 extern sf::View camera; //объ€вление вида
 void getPlayerCoordinateForView();
 
+extern double cameraTimer;
+
 #endif

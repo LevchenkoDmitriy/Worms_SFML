@@ -2,6 +2,8 @@
 
 sf::View camera(sf::FloatRect(0, 0, (float)WINDOW_WIDTH, (float)WINDOW_HEIGHT)); //объявление вида
 
+double cameraTimer = 0;
+
 void getPlayerCoordinateForView() {
 	b2Vec2 position = body[currentWorm]->GetPosition();
 	//Слава богам Олимпа, оно работает!
@@ -59,5 +61,8 @@ void getPlayerCoordinateForView() {
 }
 	//Если всё норм
 	else
-	camera.setCenter((float)(position.x* SCALE), (float)(position.y*SCALE));
+		if (cameraTimer >= 1) {
+			camera.setCenter((float)(position.x* SCALE), (float)(position.y*SCALE));
+			cameraTimer = 0;
+		}
 };

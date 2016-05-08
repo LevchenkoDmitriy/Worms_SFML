@@ -36,14 +36,14 @@ public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
 		b2Vec2 position = body[currentWorm]->GetPosition();
-		position.x -= 0.2;
+		position.x -= 0.1;
 		body[currentWorm]->SetTransform(position, 0);
 		body[currentWorm]->SetActive(true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
 		b2Vec2 position = body[currentWorm]->GetPosition();
-		position.x += 0.2;
+		position.x += 0.1;
 		body[currentWorm]->SetTransform(position, 0);
 		body[currentWorm]->SetActive(true);
 	}
