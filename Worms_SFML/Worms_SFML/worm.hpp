@@ -57,7 +57,7 @@ public:
 class wormRender {
 public:
 	void wormMovingLeftRender() {
-		moveTimerLeft += 0.5;
+		moveTimerLeft += 0.4;
 		if (moveTimerLeft > 1) {
 			if (leftX == 3)
 				leftX = 0;
@@ -76,7 +76,7 @@ public:
 	}
 
 	void wormMovingRightRender() {
-		moveTimerRight += 0.5;
+		moveTimerRight += 0.4;
 		if (moveTimerRight > 1) {
 			if (rightX == 3)
 				rightX = 0;
@@ -98,13 +98,13 @@ public:
 		b2Vec2 positionStatic;
 		positionStatic = body[currentWorm]->GetPosition();
 		if (worm[currentWorm].view == false) {
-			wormSprite.setTextureRect(sf::IntRect(0, 0, 40, 40));
+			wormSprite.setTextureRect(sf::IntRect(leftX*40, 0, 40, 40));
 			wormSprite.setOrigin(20, 20);
 			wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
 			window.draw(wormSprite);
 		}
 		if (worm[currentWorm].view == true) {
-			wormSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));
+			wormSprite.setTextureRect(sf::IntRect(rightX * 40, 40, 40, 40));
 			wormSprite.setOrigin(20, 20);
 			wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
 			window.draw(wormSprite);
@@ -117,20 +117,20 @@ public:
 			if (!worm[i].isDead) {
 				if (i == currentWorm)
 					continue;
-				else{
-				positionStatic = body[i]->GetPosition();
-				if (worm[i].view == false) {
-					wormSprite.setTextureRect(sf::IntRect(0, 0, 40, 40));
-					wormSprite.setOrigin(20, 20);
-					wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
-					window.draw(wormSprite);
-				}
-				if (worm[i].view == true) {
-					wormSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));
-					wormSprite.setOrigin(20, 20);
-					wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
-					window.draw(wormSprite);
-				}
+				else {
+					positionStatic = body[i]->GetPosition();
+					if (worm[i].view == false) {
+						wormSprite.setTextureRect(sf::IntRect(0, 0, 40, 40));
+						wormSprite.setOrigin(20, 20);
+						wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
+						window.draw(wormSprite);
+					}
+					if (worm[i].view == true) {
+						wormSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));
+						wormSprite.setOrigin(20, 20);
+						wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
+						window.draw(wormSprite);
+					}
 				}
 			}
 		}
