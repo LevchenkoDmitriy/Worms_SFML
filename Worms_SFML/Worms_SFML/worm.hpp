@@ -35,18 +35,22 @@ class wormMoving {
 public:
 	void wormMoveLeft() {
 		worm[currentWorm].isMoveLeft = true;
-		float angle = body[currentWorm]->GetAngle();
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(-700, 0), body[currentWorm]->GetLocalCenter(), true);
+		b2Vec2 position = body[currentWorm]->GetPosition();
+		position.x -= 0.2;
+		body[currentWorm]->SetTransform(position, 0);
+		body[currentWorm]->SetActive(true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
-		body[currentWorm]->ApplyLinearImpulse(b2Vec2(+700, 0), body[currentWorm]->GetLocalCenter(), true);
+		b2Vec2 position = body[currentWorm]->GetPosition();
+		position.x += 0.2;
+		body[currentWorm]->SetTransform(position, 0);
+		body[currentWorm]->SetActive(true);
 	}
 
 	void wormJump() {
 			worm[currentWorm].isJump = true;
 			body[currentWorm]->ApplyLinearImpulse(b2Vec2(0, -1000), body[currentWorm]->GetLocalCenter(), true);
-		//worm[currentWorm].isJump = false;
 	}
 
 	void wormFall() {
