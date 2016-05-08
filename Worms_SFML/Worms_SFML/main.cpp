@@ -21,7 +21,7 @@ int main()
 		Handler();
 		
 		window.clear();
-		cameraTimer += 1;
+		cameraTimer += 0.5;
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);

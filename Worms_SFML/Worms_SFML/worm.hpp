@@ -38,14 +38,14 @@ public:
 		b2Vec2 position = body[currentWorm]->GetPosition();
 		position.x -= 0.1;
 		body[currentWorm]->SetTransform(position, 0);
-		body[currentWorm]->SetActive(true);
+		body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 	}
 	void wormMoveRight() {
 		worm[currentWorm].isMoveRight = true;
 		b2Vec2 position = body[currentWorm]->GetPosition();
 		position.x += 0.1;
 		body[currentWorm]->SetTransform(position, 0);
-		body[currentWorm]->SetActive(true);
+		body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 	}
 
 	void wormJump() {
