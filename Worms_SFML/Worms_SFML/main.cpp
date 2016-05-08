@@ -18,10 +18,12 @@ int main()
 
 	while (!quit)
 	{	
+		if (eventGameStart) {
+			checkGround();
+		}
 		Handler();
 		
 		window.clear();
-		cameraTimer += 0.5;
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);

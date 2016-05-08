@@ -21,6 +21,5 @@
 #include "physics.hpp"
 #include "worm.hpp"
 #include "camera.hpp"
-#include "contactListener.hpp"
 
 #endif

@@ -30,7 +30,7 @@ void generateWorms() {
 
 		worm[k].isMoveLeft = false;
 		worm[k].isMoveRight = false;
-		worm[k].isFalling = false;
+		worm[k].onGround = false;
 		worm[k].isJump = false;
 		worm[k].view = false;
 
@@ -49,6 +49,17 @@ void generateWorms() {
 	}
 }
 
-void filterWormMoving() {
+void checkGround() {
+		for (b2ContactEdge* edge = body[currentWorm]->GetContactList(); edge; edge = edge->next) {
+			if (edge->contact->IsTouching()) {
+				worm[currentWorm].onGround = true;
+			}
+	}
 
+}
+
+void setGround() {
+	for (int i = 0; i < 6; i++) {
+		worm[i].onGround = false;
+	}
 }

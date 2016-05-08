@@ -57,10 +57,9 @@ void wormGeneratePhysics() {
 		fixtureDef.friction = 0.03f;		body[i]->CreateFixture(&fixtureDef);
 
 		//Добавляем прямоугольник для определения на земле мы или нет
-		dynamicBox.SetAsBox(0.3, 0.3, b2Vec2(0, -0.45), 0);
+		dynamicBox.SetAsBox(0.5, 0.5, b2Vec2(0, -0.4), 0);
 		fixtureDef.isSensor = true;
 		b2Fixture* footSensorFixture = body[i]->CreateFixture(&fixtureDef);
-		footSensorFixture->SetUserData((void*)i);
 
 
 	}

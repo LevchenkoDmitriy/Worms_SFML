@@ -13,7 +13,7 @@ struct wormFields {
 	bool isMoveLeft;
 	bool isMoveRight;
 	bool isJump;
-	bool isFalling;
+	bool onGround;
 
 	bool view;//Показывает, куда двигался червь(нужно для статичного рендера)
 };
@@ -34,23 +34,42 @@ extern double moveTimerRight;
 class wormMoving {
 public:
 	void wormMoveLeft() {
-		worm[currentWorm].isMoveLeft = true;
-		b2Vec2 position = body[currentWorm]->GetPosition();
-		position.x -= 0.1;
-		body[currentWorm]->SetTransform(position, 0);
-		body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		if (worm[currentWorm].onGround) {
+			worm[currentWorm].isMoveLeft = true;
+			b2Vec2 position = body[currentWorm]->GetPosition();
+			position.x -= 0.08;
+			body[currentWorm]->SetTransform(position, 0);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		}
+		else {
+			b2Vec2 position = body[currentWorm]->GetPosition();
+			position.x -= 0.1;
+			body[currentWorm]->SetTransform(position, 0);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		}
 	}
 	void wormMoveRight() {
-		worm[currentWorm].isMoveRight = true;
-		b2Vec2 position = body[currentWorm]->GetPosition();
-		position.x += 0.1;
-		body[currentWorm]->SetTransform(position, 0);
-		body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		if (worm[currentWorm].onGround) {
+			worm[currentWorm].isMoveRight = true;
+			b2Vec2 position = body[currentWorm]->GetPosition();
+			position.x += 0.08;
+			body[currentWorm]->SetTransform(position, 0);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		}
+		else
+		{
+			b2Vec2 position = body[currentWorm]->GetPosition();
+			position.x += 0.1;
+			body[currentWorm]->SetTransform(position, 0);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
+		}
 	}
 
 	void wormJump() {
+		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isJump = true;
-			body[currentWorm]->ApplyLinearImpulse(b2Vec2(0, -1000), body[currentWorm]->GetLocalCenter(), true);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, -150000), true);
+		}
 	}
 
 	void wormFall() {
@@ -141,5 +160,8 @@ private:
 	b2Vec2 position = body[currentWorm]->GetPosition();
 	float angle = body[currentWorm]->GetAngle();
 };
+
+void checkGround();
+void setGround();
 
 #endif

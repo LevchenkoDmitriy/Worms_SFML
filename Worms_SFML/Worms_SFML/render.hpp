@@ -43,7 +43,6 @@ void drawTerrarian();
 void singleRender(bool render);
 //Рендер червей
 void wormRenderMoving();
-void wormRenderStatic();
 //Отображение имени червя
 void drawWormName();
 //Функция масштабирования спрайтов под разрешение монитора
