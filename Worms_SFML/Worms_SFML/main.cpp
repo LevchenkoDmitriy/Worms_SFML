@@ -62,6 +62,9 @@ void Handler() {
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space))&& (sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
 				WormMoving.wormJumpLeft();
 			}
+			if (eventGameStart && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				//Тут выстрел
+			}
 		}
 	}
 }

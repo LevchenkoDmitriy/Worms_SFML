@@ -49,5 +49,7 @@ void drawWormName();
 sf::Sprite resize(sf::Sprite sprite);
 //Отрисовка оружия
 void drawWeapon();
+//Отрисовка выстрела
+void drawShot();
 
 #endif
