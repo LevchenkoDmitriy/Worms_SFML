@@ -7,6 +7,9 @@ int leftX = 0;
 int rightX = 0;
 double moveTimerLeft = 0;
 double moveTimerRight = 0;
+double moveTimerJump;
+double moveTimerJumpRight;
+double moveTimerJumpLeft;
 
 void deathChecking() {
 	for (int i = 0; i < 6; i++) {

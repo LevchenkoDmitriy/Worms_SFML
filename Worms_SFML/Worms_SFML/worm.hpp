@@ -13,6 +13,8 @@ struct wormFields {
 	bool isMoveLeft;
 	bool isMoveRight;
 	bool isJump;
+	bool isJumpRight;
+	bool isJumpLeft;
 	bool onGround;
 
 	bool view;//ѕоказывает, куда двигалс€ червь(нужно дл€ статичного рендера)
@@ -30,6 +32,10 @@ extern int leftX;
 extern int rightX;
 extern double moveTimerLeft;
 extern double moveTimerRight;
+extern double moveTimerJump;
+extern double moveTimerJumpRight;
+extern double moveTimerJumpLeft;
+
 //”правление движением черв€ка
 class wormMoving {
 public:
@@ -72,6 +78,20 @@ public:
 		}
 	}
 
+	void wormJumpRight() {
+		if (worm[currentWorm].onGround) {
+			worm[currentWorm].isJumpRight = true;
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(-50000, -50000), true);
+		}
+	}
+
+	void wormJumpLeft() {
+		if (worm[currentWorm].onGround) {
+			worm[currentWorm].isJumpLeft = true;
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(50000, -50000), true);
+		}
+	}
+
 	void wormFall() {
 
 	}
@@ -103,15 +123,63 @@ public:
 				rightX = 0;
 			else
 				rightX++;
-				wormSprite.setTextureRect(sf::IntRect(rightX * 40, 40, 40, 40));
-				wormSprite.setOrigin(20, 20);
-				wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
-				wormSprite.setRotation(angle*RAD);
+			wormSprite.setTextureRect(sf::IntRect(rightX * 40, 40, 40, 40));
+			wormSprite.setOrigin(20, 20);
+			wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
+			wormSprite.setRotation(angle*RAD);
 
-				window.draw(wormSprite);
+			window.draw(wormSprite);
 			moveTimerRight = 0;
 		}
 	}
+
+		void wormJumpRender() {
+			moveTimerJump += 0.4;
+			if (moveTimerJump > 1) {
+				while (worm[currentWorm].onGround == false) {
+					wormSprite.setTextureRect(sf::IntRect(80, 80, 40, 60));
+					wormSprite.setOrigin(20, 20);
+					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
+					wormSprite.setRotation(angle*RAD);
+
+					window.draw(wormSprite);
+					moveTimerJump = 0;
+				}
+			}
+
+	}
+
+		void wormJumpRightRender() {
+			moveTimerJumpRight += 0.4;
+			if (moveTimerJumpRight > 1) {
+				while (worm[currentWorm].onGround == false) {
+					wormSprite.setTextureRect(sf::IntRect(40, 80, 40, 60));
+					wormSprite.setOrigin(20, 20);
+					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
+					wormSprite.setRotation(angle*RAD);
+
+					window.draw(wormSprite);
+					moveTimerJumpRight = 0;
+				}
+			}
+
+		}
+
+		void wormJumpLeftRender() {
+			moveTimerJumpLeft += 0.4;
+			if (moveTimerJumpLeft > 1) {
+				while (worm[currentWorm].onGround == false) {
+					wormSprite.setTextureRect(sf::IntRect(0, 80, 40, 60));
+					wormSprite.setOrigin(20, 20);
+					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
+					wormSprite.setRotation(angle*RAD);
+
+					window.draw(wormSprite);
+					moveTimerJumpLeft = 0;
+				}
+			}
+
+		}
 
 	void wormStaticCurrentRender() {
 		b2Vec2 positionStatic;
