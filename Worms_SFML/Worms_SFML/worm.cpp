@@ -12,14 +12,16 @@ void deathChecking() {
 	for (int i = 0; i < 6; i++) {
 		b2Vec2 position = body[i]->GetPosition();
 		float angle = body[i]->GetAngle();
-		if ((position.x > 2480) ||
-			(position.x < -980) ||
-			(position.y < -970) ||
-			(position.y > 800)) {
+		if (position.y*SCALE > 800) {
+			worm[i].isDead = true;
+		}
+		if (worm[i].health <= 0) {
 			worm[i].isDead = true;
 		}
 	}
 }
+
+
 
 void generateWorms() {
 	for (int k = 0; k < 6; k++) {
@@ -66,3 +68,12 @@ void setGround() {
 	}
 }
 
+void wormRotation() {
+	if (worm[currentWorm].isDead) {
+		if (currentWorm == 5) {
+			currentWorm = 0;
+		}
+		else
+			currentWorm++;
+	}
+}

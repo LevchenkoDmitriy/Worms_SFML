@@ -196,9 +196,12 @@ private:
 	float angle = body[currentWorm]->GetAngle();
 };
 
+//Функция проверки на земле ли червь
 void checkGround();
+//Выставление флага onGround = 0 по умолчанию
 void setGround();
 
+//Взято со stackoverflow, чтобы переводить числа в строку 
 template <typename T>
 std::string toString(T val)
 {
@@ -215,5 +218,7 @@ T fromString(const std::string& s)
 	iss >> res;
 	return res;
 }
+//Функция ротации червей при смерти
+void wormRotation();
 
 #endif
