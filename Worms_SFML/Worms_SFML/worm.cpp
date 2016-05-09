@@ -50,10 +50,12 @@ void generateWorms() {
 }
 
 void checkGround() {
-		for (b2ContactEdge* edge = body[currentWorm]->GetContactList(); edge; edge = edge->next) {
+	for (int i = 0; i < 6; i++) {
+		for (b2ContactEdge* edge = body[i]->GetContactList(); edge; edge = edge->next) {
 			if (edge->contact->IsTouching()) {
-				worm[currentWorm].onGround = true;
+				worm[i].onGround = true;
 			}
+		}
 	}
 
 }
