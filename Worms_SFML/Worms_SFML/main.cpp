@@ -5,8 +5,8 @@ sf::Clock elapsedTime;
 sf::Clock animationClock;
 b2Vec2 gravity(0.0f, 20.0f);
 
-int WINDOW_WIDTH = 1024;
-int WINDOW_HEIGHT = 768;
+int WINDOW_WIDTH = 1920;
+int WINDOW_HEIGHT = 1080;
 
 bool quit = false;
 b2World world(gravity);

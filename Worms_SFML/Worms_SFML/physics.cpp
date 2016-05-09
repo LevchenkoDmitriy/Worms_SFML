@@ -29,7 +29,7 @@ void groundPhysics() {
 					b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
 					b2CircleShape circle;
-					circle.m_radius = 0.001 / SCALE;
+					circle.m_radius = 0.1 / SCALE;
 					b2FixtureDef circleDef;
 					circleDef.shape = &circle;
 					circleDef.density = 0;
@@ -61,6 +61,7 @@ void wormGeneratePhysics() {
 		fixtureDef.isSensor = true;
 		b2Fixture* footSensorFixture = body[i]->CreateFixture(&fixtureDef);
 
+		body[i]->SetBullet(true);
 
 	}
 

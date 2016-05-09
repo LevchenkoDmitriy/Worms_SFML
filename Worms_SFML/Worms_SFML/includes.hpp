@@ -4,10 +4,8 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <vector>
-#include <ctime>
 #include <string>
-#include <set>
+#include <sstream>
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>

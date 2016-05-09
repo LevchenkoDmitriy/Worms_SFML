@@ -32,9 +32,6 @@ extern int leftX;
 extern int rightX;
 extern double moveTimerLeft;
 extern double moveTimerRight;
-extern double moveTimerJump;
-extern double moveTimerJumpRight;
-extern double moveTimerJumpLeft;
 
 //Управление движением червяка
 class wormMoving {
@@ -43,13 +40,13 @@ public:
 		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isMoveLeft = true;
 			b2Vec2 position = body[currentWorm]->GetPosition();
-			position.x -= 0.08;
+			position.x -= 0.1;
 			body[currentWorm]->SetTransform(position, 0);
 			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 		}
 		else {
 			b2Vec2 position = body[currentWorm]->GetPosition();
-			position.x -= 0.1;
+			position.x -= 0.08;
 			body[currentWorm]->SetTransform(position, 0);
 			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 		}
@@ -58,14 +55,14 @@ public:
 		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isMoveRight = true;
 			b2Vec2 position = body[currentWorm]->GetPosition();
-			position.x += 0.08;
+			position.x += 0.1;
 			body[currentWorm]->SetTransform(position, 0);
 			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 		}
 		else
 		{
 			b2Vec2 position = body[currentWorm]->GetPosition();
-			position.x += 0.1;
+			position.x += 0.08;
 			body[currentWorm]->SetTransform(position, 0);
 			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, 0.1), true);
 		}
@@ -92,9 +89,6 @@ public:
 		}
 	}
 
-	void wormFall() {
-
-	}
 };
 
 class wormRender {
@@ -133,53 +127,16 @@ public:
 		}
 	}
 
-		void wormJumpRender() {
-			moveTimerJump += 0.4;
-			if (moveTimerJump > 1) {
-				while (worm[currentWorm].onGround == false) {
-					wormSprite.setTextureRect(sf::IntRect(80, 80, 40, 60));
-					wormSprite.setOrigin(20, 20);
-					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
-					wormSprite.setRotation(angle*RAD);
+	void wormJumpRender() {
+			if (!worm[currentWorm].onGround) {
+				wormSprite.setTextureRect(sf::IntRect(80, 80, 40, 60));
+				wormSprite.setOrigin(20, 20);
+				wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
+				wormSprite.setRotation(angle*RAD);
 
-					window.draw(wormSprite);
-					moveTimerJump = 0;
-				}
-			}
-
+				window.draw(wormSprite);
+		}
 	}
-
-		void wormJumpRightRender() {
-			moveTimerJumpRight += 0.4;
-			if (moveTimerJumpRight > 1) {
-				while (worm[currentWorm].onGround == false) {
-					wormSprite.setTextureRect(sf::IntRect(40, 80, 40, 60));
-					wormSprite.setOrigin(20, 20);
-					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
-					wormSprite.setRotation(angle*RAD);
-
-					window.draw(wormSprite);
-					moveTimerJumpRight = 0;
-				}
-			}
-
-		}
-
-		void wormJumpLeftRender() {
-			moveTimerJumpLeft += 0.4;
-			if (moveTimerJumpLeft > 1) {
-				while (worm[currentWorm].onGround == false) {
-					wormSprite.setTextureRect(sf::IntRect(0, 80, 40, 60));
-					wormSprite.setOrigin(20, 20);
-					wormSprite.setPosition(position.x*SCALE, position.y*SCALE);
-					wormSprite.setRotation(angle*RAD);
-
-					window.draw(wormSprite);
-					moveTimerJumpLeft = 0;
-				}
-			}
-
-		}
 
 	void wormStaticCurrentRender() {
 		b2Vec2 positionStatic;
@@ -201,7 +158,7 @@ public:
 	void wormRenderStatic() {
 		b2Vec2 positionStatic;
 		for (int i = 0; i < 6; i++) {
-			if (!worm[i].isDead) {
+			if (!worm[i].isDead && worm[i].onGround) {
 				if (i == currentWorm)
 					continue;
 				else {
@@ -220,6 +177,16 @@ public:
 					}
 				}
 			}
+			else
+				if (!worm[i].onGround && !worm[i].isDead) {
+					positionStatic = body[i]->GetPosition();
+					wormSprite.setTextureRect(sf::IntRect(80, 80, 40, 60));
+					wormSprite.setOrigin(20, 20);
+					wormSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
+					wormSprite.setRotation(angle*RAD);
+
+					window.draw(wormSprite);
+				}
 		}
 	}
 
@@ -231,5 +198,22 @@ private:
 
 void checkGround();
 void setGround();
+
+template <typename T>
+std::string toString(T val)
+{
+	std::ostringstream oss;
+	oss << val;
+	return oss.str();
+}
+
+template<typename T>
+T fromString(const std::string& s)
+{
+	std::istringstream iss(s);
+	T res;
+	iss >> res;
+	return res;
+}
 
 #endif
