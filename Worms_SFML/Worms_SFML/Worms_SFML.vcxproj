@@ -143,6 +143,7 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="render.cpp" />
+    <ClCompile Include="weapon.cpp" />
     <ClCompile Include="worm.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="map.hpp" />
     <ClInclude Include="physics.hpp" />
     <ClInclude Include="render.hpp" />
+    <ClInclude Include="weapon.h" />
     <ClInclude Include="worm.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

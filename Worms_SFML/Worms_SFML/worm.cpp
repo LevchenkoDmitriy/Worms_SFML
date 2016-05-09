@@ -21,8 +21,6 @@ void deathChecking() {
 	}
 }
 
-
-
 void generateWorms() {
 	for (int k = 0; k < 6; k++) {
 		worm[k].isDead = false;
@@ -59,7 +57,6 @@ void checkGround() {
 			}
 		}
 	}
-
 }
 
 void setGround() {

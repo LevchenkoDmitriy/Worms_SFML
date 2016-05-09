@@ -47,5 +47,7 @@ void wormRenderMoving();
 void drawWormName();
 //Функция масштабирования спрайтов под разрешение монитора
 sf::Sprite resize(sf::Sprite sprite);
+//Отрисовка оружия
+void drawWeapon();
 
 #endif

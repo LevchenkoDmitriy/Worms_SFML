@@ -19,5 +19,6 @@
 #include "physics.hpp"
 #include "worm.hpp"
 #include "camera.hpp"
+#include "weapon.h"
 
 #endif
