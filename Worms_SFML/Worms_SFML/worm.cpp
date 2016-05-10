@@ -24,6 +24,31 @@ void deathChecking() {
 	}
 }
 
+void GetNull() {
+	 eventMenuRender = true;
+	 eventGameSettingsRender = false;
+	 eventGameStart = false;
+	 eventSingleRender = true;
+	 terrarianFlag = true;
+	 pause = false;
+	 numOfTexture = 0;
+	 colorChooseNumber = 0;
+	 terrarian[2500][1000] = { 0 };
+	 stars[2][400] = { 0 };
+	 water = 1;
+	 currentWorm = 0;
+	 leftX = 0;
+	 rightX = 0;
+	 moveTimerLeft = 0;
+	 moveTimerRight = 0;
+	 win = false;
+	 finalTitle = false;
+	 bullet = false;
+	 contact = false;
+	 groundSavePhysics[2500][1000] = { false };
+	 quit = false;
+}
+
 void Final(int winner) {
 		window.clear();
 		sf::Font font;
@@ -33,7 +58,7 @@ void Final(int winner) {
 		//Минутка индусского кода :\, черт знает как нормально инициализировать
 		menuPosition[0].x = (float)(WINDOW_WIDTH / 2 - WINDOW_WIDTH / 20);
 		menuPosition[0].y = (float)(WINDOW_HEIGHT / 3 + WINDOW_HEIGHT / 15);
-		menuPosition[1].x = (float)(WINDOW_WIDTH / 2 - 1.3*WINDOW_WIDTH / 20);
+		menuPosition[1].x = (float)(WINDOW_WIDTH / 2 - WINDOW_WIDTH / 20);
 		menuPosition[1].y = (float)(WINDOW_HEIGHT / 3 + 3 * WINDOW_HEIGHT / 15);
 
 		for (int i = 0; i < 2; i++) {
@@ -56,8 +81,8 @@ void Final(int winner) {
 		//Go to menu
 		if (sf::IntRect(menuPosition[0].x, menuPosition[0].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))
 			&& (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
-			window.clear();
-			eventMenuRender = true;
+
+			GetNull();
 
 		}
 

@@ -6,6 +6,7 @@
 extern b2Body* rocket;
 //Переменная, отвечающая за выстрел
 extern bool bullet;
+extern bool contact;
 //Битовые маски для сравнения коллизий
 extern const short CATEGORY_WORMS;
 extern const short CATEGORY_ROCKET;

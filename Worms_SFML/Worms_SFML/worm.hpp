@@ -33,7 +33,8 @@ extern int leftX;
 extern int rightX;
 extern double moveTimerLeft;
 extern double moveTimerRight;
-
+//функция обнуления переменных после перезапуска игры
+void GetNull();
 void WinnerChecking();
 //Управление движением червяка
 class wormMoving {
