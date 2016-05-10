@@ -50,6 +50,6 @@ sf::Sprite resize(sf::Sprite sprite);
 //Отрисовка оружия
 void drawWeapon();
 //Отрисовка выстрела
-void drawShot();
+//void drawShot();
 
 #endif

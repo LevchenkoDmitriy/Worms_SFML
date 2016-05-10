@@ -53,6 +53,6 @@ private:
 	b2Vec2 positionWorm = body[currentWorm]->GetPosition();
 };
 
-void weaponShot();
+//void weaponShot();
 
 #endif
