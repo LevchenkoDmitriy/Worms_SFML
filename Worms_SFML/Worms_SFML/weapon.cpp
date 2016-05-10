@@ -107,7 +107,7 @@ void checkBullet() {
 			}
 			//Перерасчет вывода ландшафта
 			terrarianFlag = true;
-
+			rocket = NULL;
 			//Удаление тел
 			b2Body* node = world.GetBodyList();
 			while (node)
