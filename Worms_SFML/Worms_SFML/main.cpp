@@ -16,6 +16,20 @@ int main()
 	window.setFramerateLimit(60);
 	window.setKeyRepeatEnabled(true);
 
+	//Фоновая картинка меню
+	backgroundTexture.create(WINDOW_WIDTH, WINDOW_HEIGHT);
+	backgroundTexture.loadFromFile("resource/images/menu/backgroundMenu.png");
+
+	backgroundSprite.setTexture(backgroundTexture);
+	backgroundSprite.setScale(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width,
+		WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height);
+
+	backgroundSprite.setPosition(sf::Vector2f(0, 0));
+
+
+	wormTexture.loadFromFile("resource/images/worms/worms.png");
+	wormSprite.setTexture(wormTexture);
+
 	while (!quit)
 	{	
 		if (eventGameStart) {
