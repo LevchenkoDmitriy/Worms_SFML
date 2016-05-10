@@ -47,12 +47,6 @@ void singleRender(bool render);
 void wormRenderMoving();
 //Отображение имени червя
 void drawWormName();
-//Функция масштабирования спрайтов под разрешение монитора
-sf::Sprite resize(sf::Sprite sprite);
-//Отрисовка оружия
-void drawWeapon();
-//Отрисовка выстрела
-//void drawShot();
 void menuPause(bool pause);
 
 #endif

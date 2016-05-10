@@ -1,4 +1,5 @@
 #include <includes.hpp>
+
 wormFields *worm = new wormFields[8];
 int currentWorm = 0;
 
@@ -11,7 +12,7 @@ void deathChecking() {
 	for (int i = 0; i < 8; i++) {
 		b2Vec2 position = body[i]->GetPosition();
 		float angle = body[i]->GetAngle();
-		if (position.y*SCALE > 800) {
+		if (position.y*SCALE > (WINDOW_HEIGHT-80)*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)) {
 			worm[i].isDead = true;
 		}
 		if (worm[i].health <= 0) {
@@ -24,8 +25,7 @@ void generateWorms() {
 	for (int k = 0; k < 8; k++) {
 		worm[k].isDead = false;
 		worm[k].health = 100;
-
-		
+		worm[k].team = colorChooseNumber;
 		worm[k].numberOfWorm = k;
 
 		worm[k].isMoveLeft = false;
