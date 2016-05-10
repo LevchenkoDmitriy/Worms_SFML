@@ -122,7 +122,7 @@ void checkBullet() {
 					float module = sqrt(direction_new.x*direction_new.x + direction_new.y*direction_new.y);
 
 					body[i]->ApplyForceToCenter(b2Vec2(module*5000*cos(rotation* PI / 180.0), module*5000* (-1)*sin(rotation* PI / 180.0)), true);
-					worm[i].health -= 1/(module*0.001);
+					worm[i].health -= 1/(module*0.005);
 				}
 			}
 

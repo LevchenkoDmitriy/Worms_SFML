@@ -22,6 +22,6 @@
 #include "camera.hpp"
 #include "weapon.h"
 
-const double PI = 3.14;
+const double PI = 3.14159265359;
 
 #endif

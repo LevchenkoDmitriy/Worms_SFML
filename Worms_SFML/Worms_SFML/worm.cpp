@@ -46,7 +46,8 @@ void GetNull() {
 	 bullet = false;
 	 contact = false;
 	 groundSavePhysics[2500][1000] = { false };
-	 quit = false;
+	 quit = false; 
+	 rocket = NULL;
 }
 
 void Final(int winner) {
