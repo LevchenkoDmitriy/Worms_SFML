@@ -12,7 +12,7 @@ void deathChecking() {
 	for (int i = 0; i < 6; i++) {
 		b2Vec2 position = body[i]->GetPosition();
 		float angle = body[i]->GetAngle();
-		if (position.y*SCALE > 800) {
+		if (position.y*SCALE > (WINDOW_HEIGHT-80)*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)) {
 			worm[i].isDead = true;
 		}
 		if (worm[i].health <= 0) {

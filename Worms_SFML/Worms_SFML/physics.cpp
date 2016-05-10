@@ -35,10 +35,11 @@ void groundPhysics() {
 					circleDef.density = 0;
 					circleDef.friction = 0.5f;
 					circleDef.filter.categoryBits = CATEGORY_GROUND;
-
 					circleDef.filter.maskBits = MASK_GROUND;
 
 					groundBody->CreateFixture(&circleDef);
+					int integer = 100;
+					groundBody->SetUserData((void*)integer);
 					
 				}
 			}
