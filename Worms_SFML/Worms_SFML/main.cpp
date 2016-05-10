@@ -46,6 +46,7 @@ int main()
 		window.setView(camera);//"оживляем" камеру в окне sfml
 		WinnerChecking();
 		window.display();
+		std::cout << win << std::endl;
 
 	}
 	

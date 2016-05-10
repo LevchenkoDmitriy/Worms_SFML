@@ -5,6 +5,7 @@ sf::View camera(sf::FloatRect(0, 0, (float)WINDOW_WIDTH, (float)WINDOW_HEIGHT));
 void getPlayerCoordinateForView() {
 	if (!pause && !win) {
 		b2Vec2 position = body[currentWorm]->GetPosition();
+	
 		//Слава богам Олимпа, оно работает!
 
 		//Первоначальное условие: если осуществляется выход за любую из границ

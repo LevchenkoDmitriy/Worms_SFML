@@ -94,7 +94,7 @@ void Final(int winner) {
 		//Go to menu
 		if (sf::IntRect(menuPosition[0].x, menuPosition[0].y, WINDOW_WIDTH / 33 * 4, WINDOW_WIDTH / 25).contains(sf::Mouse::getPosition(window))
 			&& (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))) {
-
+			win = false;
 			GetNull();
 
 		}
@@ -139,7 +139,7 @@ void WinnerChecking() {
 				win = true;
 			}
 			else
-				if (firstTeam == secondTeam == 4) {
+				if ((firstTeam == 4 ) && (secondTeam == 4)) {
 					winner = 0;
 					Final(winner);
 					win = true;
@@ -232,7 +232,7 @@ void wormRotation(bool flag) {
 			break;
 		}
 		}
-	}
+	}else
 	if (flag) {
 		switch (currentWorm) {
 		case 0: {
