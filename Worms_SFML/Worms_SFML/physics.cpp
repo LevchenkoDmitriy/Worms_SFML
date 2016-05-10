@@ -54,7 +54,7 @@ void wormGeneratePhysics() {
 		dynamicBox.SetAsBox(0.35, 0.4);		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &dynamicBox;
 		fixtureDef.density = 100.0f;
-		fixtureDef.friction = 0.03f;		body[i]->CreateFixture(&fixtureDef);
+		fixtureDef.friction = 0.05f;		body[i]->CreateFixture(&fixtureDef);
 
 		//Добавляем прямоугольник для определения на земле мы или нет
 		dynamicBox.SetAsBox(0.8, 0.8, b2Vec2(0, -0.4), 0);

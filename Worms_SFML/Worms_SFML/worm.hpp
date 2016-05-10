@@ -71,21 +71,21 @@ public:
 	void wormJump() {
 		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isJump = true;
-			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, -150000), true);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(0, -50000), true);
 		}
 	}
 
 	void wormJumpRight() {
 		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isJumpRight = true;
-			body[currentWorm]->ApplyForceToCenter(b2Vec2(-50000, -50000), true);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(-20000, -7000), true);
 		}
 	}
 
 	void wormJumpLeft() {
 		if (worm[currentWorm].onGround) {
 			worm[currentWorm].isJumpLeft = true;
-			body[currentWorm]->ApplyForceToCenter(b2Vec2(50000, -50000), true);
+			body[currentWorm]->ApplyForceToCenter(b2Vec2(20000, -7000), true);
 		}
 	}
 
