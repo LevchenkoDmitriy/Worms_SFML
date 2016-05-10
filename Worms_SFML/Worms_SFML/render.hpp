@@ -15,6 +15,8 @@ extern int numOfTexture;
 extern int colorChooseNumber;
 //Просчет одиночных объектов(см. singleRender)
 extern bool eventSingleRender;
+
+extern bool pause;
 //Задний фон меню
 extern sf::Texture backgroundTexture;
 extern sf::Sprite backgroundSprite;
@@ -51,5 +53,6 @@ sf::Sprite resize(sf::Sprite sprite);
 void drawWeapon();
 //Отрисовка выстрела
 //void drawShot();
+void menuPause(bool pause);
 
 #endif

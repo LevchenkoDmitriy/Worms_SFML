@@ -5,8 +5,8 @@ sf::Clock elapsedTime;
 sf::Clock animationClock;
 b2Vec2 gravity(0.0f, 20.0f);
 
-int WINDOW_WIDTH = 1920;
-int WINDOW_HEIGHT = 1080;
+int WINDOW_WIDTH = 1366;
+int WINDOW_HEIGHT = 768;
 
 bool quit = false;
 b2World world(gravity);
@@ -27,6 +27,7 @@ int main()
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);
+		menuPause(pause);
 		window.setView(camera);//"оживляем" камеру в окне sfml
 
 		window.display();
@@ -66,6 +67,14 @@ void Handler() {
 		}
 		if ((eventGameStart) && (sf::Mouse::isButtonPressed(sf::Mouse::Left))) {
 			shot();
+			if (eventGameStart && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				//Тут выстрел
+			}
+			//вызов меню паузы
+			if (eventGameStart && (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))) {
+				pause = true;
+			}
+				
 		}
 	}
 }
