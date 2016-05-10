@@ -14,7 +14,7 @@ extern const short CATEGORY_GROUND;
 extern const short MASK_WORM;
 extern const short MASK_ROCKET;
 extern const short MASK_GROUND;
-//Отрисовка оружия
+
 void renderWeapon();
 //Совершение выстрела
 void shot();

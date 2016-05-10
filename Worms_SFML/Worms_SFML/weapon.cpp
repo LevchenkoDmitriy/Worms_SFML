@@ -7,8 +7,8 @@ const short CATEGORY_WORMS = 0x0001;
 const short CATEGORY_ROCKET = 0x0002; 
 const short CATEGORY_GROUND = 0x0003;
 
-const short MASK_WORM = CATEGORY_GROUND;
-const short MASK_ROCKET = CATEGORY_GROUND;
+const short MASK_WORM = CATEGORY_ROCKET;
+const short MASK_ROCKET = 0;
 const short MASK_GROUND = -1;
 
 void renderWeapon() {
@@ -39,22 +39,22 @@ void shot() {
 	b2BodyDef rocketDef;
 	if (worm[currentWorm].view) {
 		rocketDef.position.Set(positionWorm.x, positionWorm.y);	}else		rocketDef.position.Set(positionWorm.x, positionWorm.y);	rocketDef.type = b2_dynamicBody;	rocket = world.CreateBody(&rocketDef);	b2PolygonShape rocketBox;
-	rocketBox.SetAsBox(0.4, 0.4);	b2FixtureDef fixtureRocketDef;
+	rocketBox.SetAsBox(0.3, 0.3);	b2FixtureDef fixtureRocketDef;
 	fixtureRocketDef.shape = &rocketBox;
-	fixtureRocketDef.density = 1.0f;
+	fixtureRocketDef.density = 0.0015;
 	fixtureRocketDef.friction = 0.3f;	fixtureRocketDef.filter.categoryBits = CATEGORY_ROCKET;	fixtureRocketDef.filter.maskBits = MASK_ROCKET;	rocket->CreateFixture(&fixtureRocketDef);
 	sf::Vector2f mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
 	b2Vec2 direction, direction_new;
 
-	direction_new.x = mousePosition.x - positionWorm.x*SCALE;
-	direction_new.y = mousePosition.y - positionWorm.y*SCALE;
+	direction_new.x = mousePosition.x*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width) - positionWorm.x*SCALE;
+	direction_new.y = mousePosition.y*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height) - positionWorm.y*SCALE;
 
-	float rotation = (atan2(direction_new.x, direction_new.y)) * RAD;
+	float rotation = (atan2(direction_new.x, direction_new.y)) * RAD - 90;
 
 	printf("%f\n", rotation);
 
-	rocket->ApplyForceToCenter(b2Vec2(500*rotation ,500 * rotation), true);
+	rocket->ApplyForceToCenter(b2Vec2(cos(rotation* PI / 180.0), (-1)*sin(rotation* PI / 180.0)), true);
 
 	bullet = true;
 

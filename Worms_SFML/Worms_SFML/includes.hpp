@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
+#include <math.h> 
 
 #include <SFML\Graphics.hpp>
 #include <SFML\System.hpp>
@@ -20,5 +21,7 @@
 #include "worm.hpp"
 #include "camera.hpp"
 #include "weapon.h"
+
+const double PI = 3.14;
 
 #endif
