@@ -1,6 +1,6 @@
 #include <includes.hpp>
 
-b2Body* rocket;
+b2Body* rocket = NULL;
 bool bullet = false;
 bool contact = false;
 
@@ -12,6 +12,7 @@ const short MASK_WORM = CATEGORY_WORMS;
 const short MASK_ROCKET = CATEGORY_ROCKET;
 const short MASK_GROUND = -1;
 
+float rotation;
 void renderWeapon() {
 	b2Vec2 positionWorm = body[currentWorm]->GetPosition();
 
@@ -39,20 +40,19 @@ void shot() {
 	b2Vec2 positionWorm = body[currentWorm]->GetPosition();
 
 	b2BodyDef rocketDef;
-	if (worm[currentWorm].view) {
-		rocketDef.position.Set(positionWorm.x, positionWorm.y);	}else		rocketDef.position.Set(positionWorm.x, positionWorm.y);	rocketDef.type = b2_dynamicBody;	rocket = world.CreateBody(&rocketDef);	b2PolygonShape rocketBox;
-	rocketBox.SetAsBox(0.01, 0.01);	b2FixtureDef fixtureRocketDef;
+		rocketDef.position.Set(positionWorm.x, positionWorm.y);	rocketDef.type = b2_dynamicBody;	rocket = world.CreateBody(&rocketDef);	b2PolygonShape rocketBox;
+		rocketBox.SetAsBox(0.1, 0.1);	b2FixtureDef fixtureRocketDef;
 	fixtureRocketDef.shape = &rocketBox;
-	fixtureRocketDef.density = 100;	fixtureRocketDef.filter.categoryBits = CATEGORY_ROCKET;	fixtureRocketDef.filter.maskBits = MASK_ROCKET;	rocket->CreateFixture(&fixtureRocketDef);
+	fixtureRocketDef.density = 100;	fixtureRocketDef.filter.categoryBits = CATEGORY_ROCKET;	fixtureRocketDef.filter.maskBits = MASK_ROCKET;	rocket->CreateFixture(&fixtureRocketDef);		rocket->SetBullet(true);
 	sf::Vector2f mousePosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
-	b2Vec2 direction, direction_new;
+		b2Vec2 direction_new;
 
 	direction_new.x = mousePosition.x - positionWorm.x*SCALE;
 	direction_new.y = mousePosition.y - positionWorm.y*SCALE;
 
-	float rotation = (atan2(direction_new.x, direction_new.y)) * RAD - 90;
-	float force = 5000;
+		rotation = (atan2(direction_new.x, direction_new.y)) * RAD - 90;
+		float force = 9000;
 
 	rocket->ApplyForceToCenter(b2Vec2(force*cos(rotation* PI / 180.0), force * (-1)*sin(rotation* PI / 180.0)), true);
 
@@ -66,6 +66,7 @@ void renderBullet() {
 		//Определяем текстуру и спрайт для отрисовки
 		sf::Texture rocketTexture;
 		rocketTexture.loadFromFile("resource/images/weapon/rocket.png");
+		
 		sf::Sprite rocketSprite(rocketTexture);
 		rocketSprite.setOrigin(20, 20);
 
@@ -75,7 +76,7 @@ void renderBullet() {
 
 		//Присваиваем координаты спрайту
 		rocketSprite.setPosition(bulletPos.x * SCALE, bulletPos.y * SCALE);
-		rocketSprite.setRotation(angle*RAD);
+		rocketSprite.setRotation(rotation*RAD);
 
 		//Отрисовка
 		window.draw(rocketSprite);
@@ -84,14 +85,15 @@ void renderBullet() {
 
 void checkBullet() {
 	if (bullet) {
+		b2Vec2 pos = rocket->GetPosition();
 		for (b2ContactEdge* edge = rocket->GetContactList(); edge; edge = edge->next) {
 			if (edge->contact->IsTouching()) {
 				contact = true;
+				//Уничтожение ракеты
+				world.DestroyBody(rocket);
 				break;
 			}
 		}
-
-		b2Vec2 pos = rocket->GetPosition();
 
 		//Удаление в месте взрыва ландшафта и физики ландшафта
 		if (contact) {
@@ -99,16 +101,55 @@ void checkBullet() {
 			contact = false;
 			for (int i = 0; i < 2500; i++) {
 				for (int j = 0; j < 1000; j++) {
-					if (((i - pos.x*SCALE)*(i - pos.x*SCALE) + (j - pos.y*SCALE)*(j - pos.y*SCALE)) < 1000) {
+					if (((i - pos.x*SCALE)*(i - pos.x*SCALE) + (j - pos.y*SCALE)*(j - pos.y*SCALE)) < 3000) {
 						terrarian[i][j] = false;
 						groundSavePhysics[i][j] = false;
 					}
 				}
 			}
+			//Отбрасываем червя и отнимаем жизни
+			for (int i = 0; i < 8; i++) {
+				b2Vec2 wormPos = body[i]->GetPosition();
+
+				b2Vec2 direction_new;
+
+				direction_new.x = wormPos.x*SCALE - pos.x*SCALE;
+				direction_new.y = wormPos.x*SCALE - pos.x*SCALE;
+
+				if ((direction_new.x*direction_new.x +
+					(direction_new.y*direction_new.y)) < 3000) {
+					float rotation = (atan2(direction_new.x, direction_new.y)) * RAD - 90;
+					float module = sqrt(direction_new.x*direction_new.x + direction_new.y*direction_new.y);
+
+					body[i]->ApplyForceToCenter(b2Vec2(module*5000*cos(rotation* PI / 180.0), module*5000* (-1)*sin(rotation* PI / 180.0)), true);
+					worm[i].health -= module*2;
+				}
+			}
+
 			//Перерасчет вывода ландшафта
 			terrarianFlag = true;
 
-			
+			//Удаление тел
+			b2Body* node = world.GetBodyList();
+			while (node)
+			{
+				b2Body* b = node;
+				if(b != NULL){
+				node = node->GetNext();
+				b2Vec2 bodyPosition = b->GetPosition();
+
+				bodyPosition.x = (int)(bodyPosition.x*SCALE);
+				bodyPosition.y = (int)(bodyPosition.y*SCALE);
+				if(b->GetUserData() != NULL){
+					int integer = (int)b->GetUserData();
+
+					if ((groundSavePhysics[(int)bodyPosition.x][(int)bodyPosition.y] == false) &&
+						(integer == 100)) {
+						world.DestroyBody(b);
+					}
+					}
 		}
+	}
+}
 	}
 }
