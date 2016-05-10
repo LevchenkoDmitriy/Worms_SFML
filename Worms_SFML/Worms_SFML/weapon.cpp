@@ -105,7 +105,6 @@ void checkBullet() {
 					}
 				}
 			}
-			rocket = NULL;
 			//Перерасчет вывода ландшафта
 			terrarianFlag = true;
 
@@ -116,8 +115,10 @@ void checkBullet() {
 				b2Body* b = node;
 				node = node->GetNext();
 				b2Vec2 bodyPosition = b->GetPosition();
+
 				bodyPosition.x = bodyPosition.x*SCALE;
 				bodyPosition.y = bodyPosition.y*SCALE;
+
 				int integer = (int)b->GetUserData();
 				if ((groundSavePhysics[(int)bodyPosition.x][(int)bodyPosition.y] == false) && 
 					(integer == 100)) {
