@@ -157,7 +157,7 @@ public:
 	
 	void wormRenderStatic() {
 		b2Vec2 positionStatic;
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 8; i++) {
 			if (!worm[i].isDead && worm[i].onGround) {
 				if (i == currentWorm)
 					continue;

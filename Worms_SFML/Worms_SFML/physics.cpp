@@ -3,7 +3,7 @@
 bool groundSavePhysics[2500][1000] = { false };
 const float SCALE = 30.0f;
 const double RAD = 57.2958;
-b2Body* body[6];
+b2Body* body[8];
 
 void groundPhysics() {
 	
@@ -47,7 +47,7 @@ void groundPhysics() {
 }
 
 void wormGeneratePhysics() {
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 8; i++) {
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(worm[i].position.x / SCALE, worm[i].position.y / SCALE);
