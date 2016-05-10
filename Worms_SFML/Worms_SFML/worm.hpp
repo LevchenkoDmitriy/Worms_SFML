@@ -19,7 +19,7 @@ struct wormFields {
 
 	bool view;//Показывает, куда двигался червь(нужно для статичного рендера)
 };
-extern bool finalTitle;
+extern bool win;
 //Класс обработки движения
 extern wormFields *worm;
 //Указатель на текущего червя
@@ -222,6 +222,6 @@ T fromString(const std::string& s)
 }
 //Функция ротации червей при смерти
 void wormRotation();
-void Final(bool start);
+void Final(int winner);
 
 #endif

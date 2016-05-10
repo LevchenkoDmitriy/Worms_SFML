@@ -8,6 +8,7 @@ int leftX = 0;
 int rightX = 0;
 double moveTimerLeft = 0;
 double moveTimerRight = 0;
+bool win = false;
 bool finalTitle = false;
 
 void deathChecking() {
@@ -17,20 +18,14 @@ void deathChecking() {
 		if (position.y*SCALE > (WINDOW_HEIGHT-80)*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)) {
 			worm[i].isDead = true;
 		}
-		if (position.x*SCALE > WINDOW_WIDTH*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().height)) {
-			worm[i].isDead = true;
-		}
-		if (position.y*SCALE < 0) {
-			worm[i].isDead = true;
-		}
 		if (worm[i].health <= 0) {
 			worm[i].isDead = true;
 		}
 	}
 }
 
-void Final() {
-	if (finalTitle) {
+void Final(int winner) {
+		window.clear();
 		sf::Font font;
 		font.loadFromFile("resource/fonts/AdLib.ttf");
 		sf::Text menuButton[2];
@@ -76,68 +71,42 @@ void Final() {
 			menuButton[i].setPosition(menuPosition[i]);
 			window.draw(menuButton[i]);
 		}
-	}
 }
 
 void WinnerChecking() {
-	int first = 0;
-	int second = 0;
-	sf::Font font;
-	font.loadFromFile("resource/fonts/AdLib.ttf");
-	sf::Text menuButton[1];
-	for (int i = 0; i < 4; i++) {
-		if (worm[i].isDead == true) {
-			first = 0;
-		}
-		else first = 1;
-	}
+	if (eventGameStart) {
+		int firstTeam = 0;
+		int secondTeam = 0;
+		//-1 - нет победы, 0 - ничья, 1 - победа 1 команды, 2 - победа 2 команды
+		int winner = -1;
 
-	for (int i = 4; i < 8; i++) {
-		if (worm[i].isDead == true) {
-			second = 0;
-		}
-		else second = 1;
-	}
-
-	if (first == 0) {
-		if (second == 0) {
-			window.clear();
-			menuButton[1].setFont(font);
-			menuButton[1].setCharacterSize(WINDOW_WIDTH / 33);
-			menuButton[1].setString("Winner: Nobody");
-			finalTitle = true;
-			Final();
-		}
-		else {
-			window.clear();
-			menuButton[1].setFont(font);
-			menuButton[1].setCharacterSize(WINDOW_WIDTH / 33);
-			menuButton[1].setString("Winner: Second team");
-			finalTitle = true;
-			Final();
-		}
-	}
-		
-	if (second == 0) {
-		if (first == 0) {
-			window.clear();
-			menuButton[1].setFont(font);
-			menuButton[1].setCharacterSize(WINDOW_WIDTH / 33);
-			menuButton[1].setString("Winner: Nobody");
-			finalTitle = true;
-			Final();
+		for (int i = 0; i < 4; i++) {
+			if (worm[i].isDead) {
+				firstTeam++;
+			}
+			if (worm[i + 4].isDead) {
+				secondTeam++;
+			}
 		}
 
-		else {
-			window.clear();
-			menuButton[1].setFont(font);
-			menuButton[1].setCharacterSize(WINDOW_WIDTH / 33);
-			menuButton[1].setString("Winner: First team");
-			finalTitle = true;
-			Final();
+		if (firstTeam == 4) {
+			winner = 2;
+			Final(winner);
+			win = true;
 		}
+		else
+			if (secondTeam == 4) {
+				winner = 1;
+				Final(winner);
+				win = true;
+			}
+			else
+				if (firstTeam == secondTeam == 4) {
+					winner = 0;
+					Final(winner);
+					win = true;
+				}
 	}
-
 }
 
 void generateWorms() {

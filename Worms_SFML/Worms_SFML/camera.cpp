@@ -3,7 +3,7 @@
 sf::View camera(sf::FloatRect(0, 0, (float)WINDOW_WIDTH, (float)WINDOW_HEIGHT)); //объявление вида
 
 void getPlayerCoordinateForView() {
-	if (!pause) {
+	if (!pause && !win) {
 		b2Vec2 position = body[currentWorm]->GetPosition();
 		//Слава богам Олимпа, оно работает!
 
