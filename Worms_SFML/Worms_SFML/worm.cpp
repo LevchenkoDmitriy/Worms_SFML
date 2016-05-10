@@ -54,21 +54,32 @@ void Final(int winner) {
 		window.clear();
 		sf::Font font;
 		font.loadFromFile("resource/fonts/AdLib.ttf");
-		sf::Text menuButton[2];
-		sf::Vector2f menuPosition[2];
+		sf::Text menuButton[3];
+		sf::Vector2f menuPosition[3];
 		//ћинутка индусского кода :\, черт знает как нормально инициализировать
 		menuPosition[0].x = (float)(WINDOW_WIDTH / 2 - WINDOW_WIDTH / 20);
 		menuPosition[0].y = (float)(WINDOW_HEIGHT / 3 + WINDOW_HEIGHT / 15);
 		menuPosition[1].x = (float)(WINDOW_WIDTH / 2 - WINDOW_WIDTH / 20);
 		menuPosition[1].y = (float)(WINDOW_HEIGHT / 3 + 3 * WINDOW_HEIGHT / 15);
+		menuPosition[2].x = (float)(WINDOW_WIDTH / 2 - WINDOW_WIDTH / 20);
+		menuPosition[2].y = (float)(WINDOW_HEIGHT / 3 - WINDOW_HEIGHT / 15);
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			menuButton[i].setFont(font);
 			menuButton[i].setCharacterSize(WINDOW_WIDTH / 33);
 		}
 
 		menuButton[0].setString("Go to menu");
 		menuButton[1].setString("Exit");
+		if (winner == 0) {
+			menuButton[2].setString("Draw!");
+		}else
+			if (winner == 1) {
+				menuButton[2].setString("Team 1 won!");
+			}else
+				if (winner == 2) {
+					menuButton[2].setString("Team 2 won!");
+				}
 
 		//ѕроверка наведени€ мыши
 		for (int i = 0; i < 2; i++) {
@@ -93,7 +104,7 @@ void Final(int winner) {
 			quit = true;
 		}
 
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 3; i++) {
 			menuButton[i].setPosition(menuPosition[i]);
 			window.draw(menuButton[i]);
 		}
@@ -179,8 +190,14 @@ void setGround() {
 	}
 }
 
-void wormRotation() {
+void wormRotation(bool flag) {
 	if (worm[currentWorm].isDead) {
+		if (currentWorm == 7) {
+			currentWorm = 0;
+		}
+		else
+			currentWorm++;
+	}if (flag) {
 		if (currentWorm == 7) {
 			currentWorm = 0;
 		}

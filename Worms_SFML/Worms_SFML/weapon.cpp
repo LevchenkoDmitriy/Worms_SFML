@@ -6,6 +6,7 @@ bool boom = false;
 bool bullet = false;
 bool contact = false;
 float timer = 0;
+float rotation;
 
 const short CATEGORY_WORMS = 0x0001;
 const short CATEGORY_ROCKET = 0x0002; 
@@ -15,7 +16,8 @@ const short MASK_WORM = CATEGORY_WORMS;
 const short MASK_ROCKET = CATEGORY_ROCKET;
 const short MASK_GROUND = -1;
 
-float rotation;
+
+
 void renderWeapon() {
 	b2Vec2 positionWorm = body[currentWorm]->GetPosition();
 
@@ -39,6 +41,7 @@ void renderWeapon() {
 }
 
 void shot() {
+
 	contact = false;
 	b2Vec2 positionWorm = body[currentWorm]->GetPosition();
 
@@ -60,6 +63,7 @@ void shot() {
 	rocket->ApplyForceToCenter(b2Vec2(force*cos(rotation* PI / 180.0), force * (-1)*sin(rotation* PI / 180.0)), true);
 
 	bullet = true;
+	wormRotation(true);
 
 
 }
@@ -130,7 +134,7 @@ void checkBullet() {
 					float module = sqrt(direction_new.x*direction_new.x + direction_new.y*direction_new.y);
 
 					body[i]->ApplyForceToCenter(b2Vec2(module*5000*cos(rotation* PI / 180.0), module*5000* (-1)*sin(rotation* PI / 180.0)), true);
-					worm[i].health -= 1/(module*0.005);
+					worm[i].health -= 1/(module*0.0005);
 				}
 			}
 
@@ -167,7 +171,7 @@ void drawBoom() {
 		sf::Texture boomTexture;
 		boomTexture.loadFromFile("resource/images/weapon/boom.png");
 		sf::Sprite boomSprite(boomTexture);
-		boomSprite.setScale(2, 2);
+		boomSprite.setScale(3, 3);
 		boomSprite.setPosition(boomCenter.x*SCALE, boomCenter.y*SCALE);
 		boomSprite.setOrigin(20, 20);
 		if (timer > 1) {
@@ -175,7 +179,7 @@ void drawBoom() {
 			boom = false;
 		}
 		else if(1 > timer > 0){
-			timer += 0.05;
+			timer += 0.09;
 			window.draw(boomSprite);
 		}
 	}

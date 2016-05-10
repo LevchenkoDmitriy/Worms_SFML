@@ -232,7 +232,7 @@ T fromString(const std::string& s)
 	return res;
 }
 //Функция ротации червей при смерти
-void wormRotation();
+void wormRotation(bool flag);
 void Final(int winner);
 
 #endif
