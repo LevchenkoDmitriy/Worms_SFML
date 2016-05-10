@@ -9,6 +9,7 @@ struct wormFields {
 	int health;
 	int team;
 	float angle;
+	bool chTeam;
 
 	bool isMoveLeft;
 	bool isMoveRight;

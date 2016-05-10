@@ -10,6 +10,7 @@ double moveTimerLeft = 0;
 double moveTimerRight = 0;
 bool win = false;
 bool finalTitle = false;
+bool currentMove = false;
 
 void deathChecking() {
 	for (int i = 0; i < 8; i++) {
@@ -148,6 +149,11 @@ void WinnerChecking() {
 
 void generateWorms() {
 	for (int k = 0; k < 8; k++) {
+		if (k < 4) {
+			worm[k].chTeam = false;
+		}
+		else
+			worm[k].chTeam = true;
 		worm[k].isDead = false;
 		worm[k].health = 100;
 		worm[k].team = colorChooseNumber;
@@ -192,16 +198,76 @@ void setGround() {
 
 void wormRotation(bool flag) {
 	if (worm[currentWorm].isDead) {
-		if (currentWorm == 7) {
-			currentWorm = 0;
+		switch (currentWorm) {
+		case 0: {
+			currentWorm = 4;
+			break;
 		}
-		else
-			currentWorm++;
-	}if (flag) {
-		if (currentWorm == 7) {
-			currentWorm = 0;
+		case 1: {
+			currentWorm = 5;
+			break;
 		}
-		else
-			currentWorm++;
+		case 2: {
+			currentWorm = 6;
+			break;
+		}
+		case 3: {
+			currentWorm = 7;
+			break;
+		}
+		case 4: {
+			currentWorm = 1;
+			break;
+		}
+		case 5: {
+			currentWorm = 2;
+			break;
+		}
+		case 6: {
+			currentWorm = 3;
+			break;
+		}
+		case 7: {
+			currentWorm = 0;
+			break;
+		}
+		}
 	}
+	if (flag) {
+		switch (currentWorm) {
+		case 0: {
+			currentWorm = 4;
+			break;
+		}
+		case 1: {
+			currentWorm = 5;
+			break;
+		}
+		case 2: {
+			currentWorm = 6;
+			break;
+		}
+		case 3: {
+			currentWorm = 7;
+			break;
+		}
+		case 4: {
+			currentWorm = 1;
+			break;
+		}
+		case 5: {
+			currentWorm = 2;
+			break;
+		}
+		case 6: {
+			currentWorm = 3;
+			break;
+		}
+		case 7: {
+			currentWorm = 0;
+			break;
+		}
+		}
+	}
+
 }
