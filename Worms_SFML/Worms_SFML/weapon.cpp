@@ -1,8 +1,11 @@
 #include <includes.hpp>
 
 b2Body* rocket = NULL;
+b2Vec2 boomCenter;
+bool boom = false;
 bool bullet = false;
 bool contact = false;
+float timer = 0;
 
 const short CATEGORY_WORMS = 0x0001;
 const short CATEGORY_ROCKET = 0x0002; 
@@ -85,15 +88,20 @@ void renderBullet() {
 
 void checkBullet() {
 	if (bullet) {
+
 		b2Vec2 pos = rocket->GetPosition();
+
 		for (b2ContactEdge* edge = rocket->GetContactList(); edge; edge = edge->next) {
 			if (edge->contact->IsTouching()) {
 				contact = true;
+				boom = true;
+				boomCenter = pos;
 				//”ничтожение ракеты
 				world.DestroyBody(rocket);
 				break;
 			}
 		}
+
 
 		//”даление в месте взрыва ландшафта и физики ландшафта
 		if (contact) {
@@ -152,4 +160,24 @@ void checkBullet() {
 	}
 }
 	}
+}
+
+void drawBoom() {
+	if (boom) {
+		sf::Texture boomTexture;
+		boomTexture.loadFromFile("resource/images/weapon/boom.png");
+		sf::Sprite boomSprite(boomTexture);
+		boomSprite.setScale(2, 2);
+		boomSprite.setPosition(boomCenter.x*SCALE, boomCenter.y*SCALE);
+		boomSprite.setOrigin(20, 20);
+		if (timer > 1) {
+			timer = 0;
+			boom = false;
+		}
+		else if(1 > timer > 0){
+			timer += 0.05;
+			window.draw(boomSprite);
+		}
+	}
+
 }

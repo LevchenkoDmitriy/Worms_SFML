@@ -22,5 +22,6 @@ void shot();
 void renderBullet();
 //Проверки для ракеты
 void checkBullet();
+void drawBoom();
 
 #endif
