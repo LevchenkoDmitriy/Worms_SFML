@@ -188,11 +188,21 @@ public:
 					wormSprite.setRotation(angle*RAD);
 
 					window.draw(wormSprite);
-				}
+				}else
+					if (worm[i].isDead) {
+						positionStatic = body[i]->GetPosition();
+						sf::Texture deathTexture;
+						deathTexture.loadFromFile("resource/images/worms/rip.png");
+						sf::Sprite deathSprite(deathTexture);
+						deathSprite.setTexture(deathTexture);
+						deathSprite.setOrigin(20, 20);
+						deathSprite.setPosition(positionStatic.x*SCALE, positionStatic.y*SCALE);
+						deathSprite.setRotation(angle*RAD);
+
+						window.draw(deathSprite);;
+					}
 		}
 	}
-
-
 private:
 	b2Vec2 position = body[currentWorm]->GetPosition();
 	float angle = body[currentWorm]->GetAngle();
