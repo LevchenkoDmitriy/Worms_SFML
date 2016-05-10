@@ -19,6 +19,7 @@ struct wormFields {
 
 	bool view;//Показывает, куда двигался червь(нужно для статичного рендера)
 };
+extern bool finalTitle;
 //Класс обработки движения
 extern wormFields *worm;
 //Указатель на текущего червя
@@ -33,6 +34,7 @@ extern int rightX;
 extern double moveTimerLeft;
 extern double moveTimerRight;
 
+void WinnerChecking();
 //Управление движением червяка
 class wormMoving {
 public:
@@ -220,5 +222,6 @@ T fromString(const std::string& s)
 }
 //Функция ротации червей при смерти
 void wormRotation();
+void Final(bool start);
 
 #endif

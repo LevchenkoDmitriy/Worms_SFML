@@ -27,9 +27,10 @@ int main()
 		renderMenu(eventMenuRender);
 		gameSettings(eventGameSettingsRender);
 		gameStart(eventGameStart);
+		
 		menuPause(pause);
 		window.setView(camera);//"оживляем" камеру в окне sfml
-
+		WinnerChecking();
 		window.display();
 
 	}
