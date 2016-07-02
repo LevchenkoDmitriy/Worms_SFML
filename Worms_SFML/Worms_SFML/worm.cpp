@@ -4,8 +4,8 @@ wormFields *worm;
 int currentWorm = 0;
 
 void generateWorms() {
+	wormFields *worm = (wormFields*)malloc(6*sizeof(wormFields));
 	for (int k = 0; k < 6; k++) {
-		wormFields *worm = new wormFields;
 		worm[k].isDead = false;
 		worm[k].health = 100;
 		worm[k].team = colorChooseNumber;
