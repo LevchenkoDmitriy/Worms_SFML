@@ -57,6 +57,7 @@ int main()
 }
 
 void Handler() {
+	wormMoving WormMoving;
 	sf::Event event;
 	while (window.pollEvent(event))
 	{
@@ -64,21 +65,21 @@ void Handler() {
 			window.close();
 		if (event.type == sf::Event::KeyPressed) {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-				wormMoving.
+				WormMoving.wormMoveLeft();
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-				wormMoving::wormMoveRight;
+				WormMoving.wormMoveRight();
 			}
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-				wormMoving::wormJump;
+				WormMoving.wormJump();
 			}
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
 				(sf::Keyboard::isKeyPressed(sf::Keyboard::A))) {
-				wormMoving::wormJumpLeft;
+				WormMoving.wormJumpLeft();
 			}
 			if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) &&
 				(sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
-				wormMoving::wormJumpRight;
+				WormMoving.wormJumpRight();
 			}
 			}
 			}
