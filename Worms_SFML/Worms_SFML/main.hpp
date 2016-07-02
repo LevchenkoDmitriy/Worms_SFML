@@ -1,6 +1,8 @@
 #pragma once
 #ifndef MAIN_H
 #define MAIN_H
+extern sf::ContextSettings settings;
+
 //Рендер окна
 extern sf::RenderWindow window;
 //Вектор гравитации

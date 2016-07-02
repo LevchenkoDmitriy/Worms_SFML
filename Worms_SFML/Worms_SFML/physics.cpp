@@ -21,7 +21,7 @@ void groundPhysics() {
 				{
 					groundSavePhysics[i][j] = true;
 					b2BodyDef groundBodyDef;
-					groundBodyDef.position.Set(i*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width)/SCALE,						j*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)/SCALE);					b2Body* groundBody = world.CreateBody(&groundBodyDef);					b2PolygonShape boxPolygon;					b2CircleShape circle;					circle.m_radius = 0.01/SCALE;					boxPolygon.SetAsBox(10 / SCALE, 10 / SCALE);					groundBody->CreateFixture(&circle, 0.0f);
+					groundBodyDef.position.Set(i*(WINDOW_WIDTH / backgroundSprite.getLocalBounds().width)/SCALE,						j*(WINDOW_HEIGHT / backgroundSprite.getLocalBounds().height)/SCALE);					b2Body* groundBody = world.CreateBody(&groundBodyDef);					b2CircleShape circle;					circle.m_radius = 0.01/SCALE;					groundBody->CreateFixture(&circle, 0.0f);
 				}
 			}
 		}

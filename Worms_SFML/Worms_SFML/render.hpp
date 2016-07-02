@@ -25,7 +25,7 @@ extern bool terrarian[2500][1000];
 //Массив координат звёздочек
 extern int stars[2][70];
 //Массив анимации воды
-extern short water;
+extern double water;
 
 //Рендер меню
 void renderMenu(bool render);
