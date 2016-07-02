@@ -7,6 +7,7 @@ void generateWorms() {
 		wormFields *worm = new wormFields;
 		worm[k].isDead = false;
 		worm[k].health = 100;
+		worm[k].team = colorChooseNumber;
 		int x = 0;
 		for (int i = 0; i < 2500; i++) {
 			for (int j = 0; j < 1000; j++) {
