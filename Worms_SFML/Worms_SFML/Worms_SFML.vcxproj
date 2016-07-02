@@ -142,6 +142,7 @@
     <ClCompile Include="map.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="render.cpp" />
+    <ClCompile Include="worm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.hpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="map.hpp" />
     <ClInclude Include="physics.hpp" />
     <ClInclude Include="render.hpp" />
+    <ClInclude Include="worm.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

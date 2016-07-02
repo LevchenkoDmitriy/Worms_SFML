@@ -17,5 +17,6 @@
 #include "render.hpp"
 #include "map.hpp"
 #include "physics.hpp"
+#include "worm.hpp"
 
 #endif
